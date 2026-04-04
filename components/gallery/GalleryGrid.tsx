@@ -96,9 +96,9 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-6xl aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] bg-zinc-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row pointer-events-auto"
+              className="relative w-full max-w-6xl max-h-[95vh] md:max-h-[85vh] md:h-[800px] bg-zinc-900 rounded-[1.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row pointer-events-auto"
             >
-              <div className="relative flex-1 bg-black group/lb">
+              <div className="relative w-full min-h-[40vh] md:min-h-0 flex-1 bg-black group/lb shrink-0 md:shrink">
                 <Image 
                   src={selectedImage.imageUrl} 
                   alt="Gallery Image" 
@@ -114,7 +114,7 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
                 </button>
               </div>
               
-              <div className="w-full md:w-[400px] p-8 md:p-12 flex flex-col justify-between bg-zinc-900 border-l border-white/5">
+              <div className="w-full md:w-[400px] p-6 md:p-12 flex flex-col justify-between bg-zinc-900 border-t md:border-t-0 md:border-l border-white/5 overflow-y-auto shrink-0 md:shrink">
                 <div className="space-y-8">
                   <div>
                     <div className="flex items-center gap-2 bg-agro-green/15 text-agro-green text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-agro-green/20 w-fit mb-6">

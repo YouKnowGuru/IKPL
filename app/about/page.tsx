@@ -263,13 +263,13 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-10 mb-16">
             <div className="max-w-2xl">
-              <h2 className="text-display font-display font-bold leading-tight mb-4">
+              <h2 className="text-display font-display font-bold leading-tight mb-4 text-white">
                 Leadership <br /><span className="gradient-text">at the Helm</span>
               </h2>
-              <p className="text-zinc-500 dark:text-zinc-400 text-lg">The individuals driving Bhutan's most reliable agricultural distribution network.</p>
+              <p className="text-zinc-400 text-lg">The individuals driving Bhutan's most reliable agricultural distribution network.</p>
             </div>
             <Link href="/contact">
-              <Button variant="outline" className="rounded-2xl h-14 px-8 border-zinc-200 dark:border-white/10 font-bold group">
+              <Button variant="outline" className="bg-transparent rounded-2xl h-14 px-8 border-white/20 text-white hover:bg-white/10 font-bold group">
                 Work With Us
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -279,18 +279,18 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
             {team.length > 0 ? team.map((member) => (
               <div key={member._id} className="group relative">
-                <div className="relative h-48 sm:h-80 md:h-96 rounded-xl sm:rounded-[2.5rem] overflow-hidden mb-3 sm:mb-6 border border-zinc-100 dark:border-white/10 shadow-sm transition-all duration-700 group-hover:rounded-[1.5rem]">
+                <div className="relative h-56 sm:h-80 md:h-96 rounded-xl sm:rounded-[2.5rem] overflow-hidden mb-3 sm:mb-6 border border-white/10 shadow-sm transition-all duration-700 group-hover:rounded-[1.5rem]">
                   {member.photo ? (
                     <Image src={member.photo} alt={member.name} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 50vw, 25vw" />
                   ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-900 flex items-center justify-center text-zinc-400 text-4xl font-bold">
+                    <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center text-zinc-500 text-4xl font-bold">
                        {member.name.charAt(0)}
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-60 transition-opacity" />
-                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6">
-                    <p className="text-white font-display font-bold text-sm sm:text-xl mb-0.5 sm:mb-1">{member.name}</p>
-                    <p className="text-agro-green font-bold text-[8px] sm:text-xs uppercase tracking-widest">{member.title}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 sm:opacity-60 transition-opacity" />
+                  <div className="absolute bottom-2 left-2 right-2 sm:bottom-6 sm:left-6 sm:right-6">
+                    <p className="text-white font-display font-bold text-xs sm:text-xl mb-0.5 sm:mb-1 leading-tight break-words">{member.name}</p>
+                    <p className="text-agro-green font-bold text-[8px] sm:text-xs uppercase tracking-widest leading-tight">{member.title}</p>
                   </div>
                 </div>
               </div>
@@ -321,7 +321,7 @@ export default function AboutPage() {
                     </Button>
                  </Link>
                  <Link href="/contact">
-                   <Button variant="outline" className="h-14 px-10 border-white/20 text-white hover:bg-white/10 font-bold text-lg rounded-2xl">
+                   <Button variant="outline" className="bg-transparent h-14 px-10 border-white/20 text-white hover:bg-white/10 font-bold text-lg rounded-2xl">
                       Contact HQ
                    </Button>
                  </Link>

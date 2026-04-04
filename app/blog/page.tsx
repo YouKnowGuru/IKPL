@@ -114,10 +114,10 @@ export default function BlogIndexPage() {
       <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[1, 2, 3, 4, 5, 6].map(i => (
                 <div key={i} className="animate-pulse space-y-4">
-                  <div className="aspect-[16/10] bg-zinc-200 dark:bg-white/5 rounded-2xl md:rounded-3xl" />
+                  <div className="aspect-[16/10] bg-zinc-200 dark:bg-white/5 rounded-[1.5rem] md:rounded-[2.5rem]" />
                   <div className="h-4 w-3/4 bg-zinc-200 dark:bg-white/5 rounded-full" />
                   <div className="h-3 w-full bg-zinc-200 dark:bg-white/5 rounded-full hidden md:block" />
                 </div>
@@ -129,7 +129,7 @@ export default function BlogIndexPage() {
               <p className="text-zinc-500">Try adjusting your filters or search term.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
               {blogs.map((blog, idx) => (
                 <motion.article
                   key={blog._id}
@@ -139,13 +139,14 @@ export default function BlogIndexPage() {
                   transition={{ delay: idx * 0.1, duration: 0.5 }}
                 >
                   <Link href={`/blog/${blog.slug}`} className="group block h-full">
-                    <div className="flex flex-col h-full bg-white dark:bg-zinc-900 rounded-[2.5rem] overflow-hidden border border-zinc-100 dark:border-white/5 shadow-sm hover:shadow-2xl hover:border-agro-green/30 transition-all duration-500 card-hover">
+                    <div className="flex flex-col h-full bg-white dark:bg-zinc-900 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-zinc-100 dark:border-white/5 shadow-sm hover:shadow-2xl hover:border-agro-green/30 transition-all duration-500 card-hover">
                       {/* Image container */}
                       <div className="relative aspect-[16/10] overflow-hidden">
                         <Image
                           src={blog.coverImage || '/images/placeholder-blog.jpg'}
                           alt={blog.title}
                           fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -157,29 +158,29 @@ export default function BlogIndexPage() {
                       </div>
 
                       {/* Content */}
-                      <div className="p-8 flex flex-col flex-1">
-                        <div className="flex items-center gap-4 text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-4">
+                      <div className="p-5 md:p-8 flex flex-col flex-1">
+                        <div className="flex items-center gap-3 md:gap-4 text-[9px] md:text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3 md:mb-4">
                           <span className="flex items-center gap-1.5">
-                            <Calendar className="h-3.5 w-3.5" />
-                            {format(new Date(blog.createdAt), 'MMM dd, yyyy')}
+                            <Calendar className="h-3 md:h-3.5 w-3 md:w-3.5" />
+                            {format(new Date(blog.createdAt), 'MMM dd')}
                           </span>
                           <span className="flex items-center gap-1.5">
-                            <Clock className="h-3.5 w-3.5" />
-                            {blog.readingTime} min read
+                            <Clock className="h-3 md:h-3.5 w-3 md:w-3.5" />
+                            {blog.readingTime} min
                           </span>
                         </div>
 
-                        <h3 className="text-2xl font-display font-bold mb-4 leading-tight group-hover:text-agro-green transition-colors line-clamp-2">
+                        <h3 className="text-lg md:text-2xl font-display font-bold mb-3 md:mb-4 leading-tight group-hover:text-agro-green transition-colors line-clamp-2">
                           {blog.title}
                         </h3>
 
-                        <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-8 line-clamp-3">
+                        <p className="text-zinc-500 dark:text-zinc-400 text-xs md:text-sm leading-relaxed mb-6 md:mb-8 line-clamp-3">
                           {blog.excerpt}
                         </p>
 
-                        <div className="mt-auto pt-6 border-t border-zinc-100 dark:border-white/5 flex items-center justify-between">
+                        <div className="mt-auto pt-4 md:pt-6 border-t border-zinc-100 dark:border-white/5 flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-full bg-agro-green/10 flex items-center justify-center font-bold text-xs text-agro-green">
+                            <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-agro-green/10 flex items-center justify-center font-bold text-[10px] md:text-xs text-agro-green">
                               {blog.author?.name?.charAt(0) || 'A'}
                             </div>
                             <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300">{blog.author?.name}</span>

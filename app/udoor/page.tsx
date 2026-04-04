@@ -126,24 +126,24 @@ export default function UdoorBrandPage() {
                     <div className="space-y-4 pt-12">
                        <div className="p-8 rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-white/5">
                           <FlaskConical className="h-8 w-8 text-agro-green mb-4" />
-                          <h4 className="font-bold mb-2 dark:text-white">Scientifically Formulated</h4>
+                          <h4 className="font-bold mb-2 text-zinc-900 dark:text-white">Scientifically Formulated</h4>
                           <p className="text-xs text-zinc-500 leading-relaxed">Scientifically developed for optimal growth across all animal species.</p>
                        </div>
                        <div className="p-8 rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-white/5">
                           <Users className="h-8 w-8 text-agro-orange mb-4" />
-                          <h4 className="font-bold mb-2 dark:text-white">Expert Team</h4>
+                          <h4 className="font-bold mb-2 text-zinc-900 dark:text-white">Expert Team</h4>
                           <p className="text-xs text-zinc-500 leading-relaxed">Managed by highly qualified nutritionists and veterinarians.</p>
                        </div>
                     </div>
                     <div className="space-y-4">
                        <div className="p-8 rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-white/5">
                           <CheckCircle className="h-8 w-8 text-blue-500 mb-4" />
-                          <h4 className="font-bold mb-2 dark:text-white">Strict Quality Control</h4>
+                          <h4 className="font-bold mb-2 text-zinc-900 dark:text-white">Strict Quality Control</h4>
                           <p className="text-xs text-zinc-500 leading-relaxed">Highest standards of safety—from raw material to final packaging.</p>
                        </div>
                        <div className="p-8 rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-white/5">
                           <Zap className="h-8 w-8 text-amber-500 mb-4" />
-                          <h4 className="font-bold mb-2 dark:text-white">Technical Support</h4>
+                          <h4 className="font-bold mb-2 text-zinc-900 dark:text-white">Technical Support</h4>
                           <p className="text-xs text-zinc-500 leading-relaxed">Expert consultation services for feed management and animal health.</p>
                        </div>
                     </div>
@@ -299,7 +299,7 @@ export default function UdoorBrandPage() {
                  </Button>
                </Link>
                <Link href="/contact">
-                  <Button variant="outline" className="h-14 px-10 border-white/10 text-white hover:bg-white/10 font-bold text-lg rounded-2xl transition-all">
+                  <Button variant="outline" className="bg-transparent h-14 px-10 border-white/10 text-white hover:bg-white/10 font-bold text-lg rounded-2xl transition-all">
                      Technical Support
                   </Button>
                </Link>

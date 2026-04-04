@@ -928,7 +928,7 @@ export default function HomePage() {
                   </Button>
                 </Link>
                 <Link href="/login">
-                  <Button variant="outline" className="h-11 px-8 border-white/20 text-white hover:bg-white/10 font-bold text-base rounded-xl w-full sm:w-auto">
+                  <Button variant="outline" className="bg-transparent h-11 px-8 border-white/20 text-white hover:bg-white/10 font-bold text-base rounded-xl w-full sm:w-auto">
                     <LogIn className="mr-2 h-4 w-4" />
                     Sign In
                   </Button>
@@ -944,7 +944,7 @@ export default function HomePage() {
                   </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button variant="outline" className="h-11 px-8 border-white/20 text-white hover:bg-white/10 font-bold text-base rounded-xl w-full sm:w-auto">
+                  <Button variant="outline" className="bg-transparent h-11 px-8 border-white/20 text-white hover:bg-white/10 font-bold text-base rounded-xl w-full sm:w-auto">
                     Talk to Expert
                   </Button>
                 </Link>
