@@ -201,7 +201,7 @@ export default function ProductDetailPage() {
         </div>
       </motion.div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-12 sm:pb-16">
         {/* Breadcrumb & Navigation */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 sm:mb-12">
           <Link href="/products" className="inline-flex items-center text-sm font-bold text-zinc-400 hover:text-agro-green transition-colors group">
@@ -215,14 +215,14 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 xl:gap-24 items-start">
           
           {/* LEFT: Premium Visuals */}
           <div className="space-y-6">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="relative aspect-square rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-white/5 shadow-xl group"
+              className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-white/5 shadow-xl group"
             >
 
               <AnimatePresence mode="wait">
@@ -246,8 +246,8 @@ export default function ProductDetailPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 pointer-events-none" />
               
               {/* Overlay Badges */}
-              <div className="absolute top-6 left-6 flex flex-col gap-3">
-                <Badge className={cn("px-4 py-2 rounded-2xl border-0 text-xs font-bold uppercase tracking-wider backdrop-blur-md", stockStatus(product).color)}>
+              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex flex-col gap-2 sm:gap-3">
+                <Badge className={cn("px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl border-0 text-[10px] sm:text-xs font-bold uppercase tracking-wider backdrop-blur-md", stockStatus(product).color)}>
                   {stockStatus(product).label}
                 </Badge>
                 {product.status === 'active' && (
@@ -307,7 +307,7 @@ export default function ProductDetailPage() {
                 <FlaskConical className="h-4 w-4" /> {getCategoryLabel(product.category)}
               </div>
               
-              <h1 className="text-3xl sm:text-4xl font-display font-bold leading-tight mb-3 text-zinc-900 dark:text-white">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold leading-tight mb-3 text-zinc-900 dark:text-white">
                 {product.name}
               </h1>
               
@@ -316,7 +316,7 @@ export default function ProductDetailPage() {
               </div>
 
               <div className="flex items-end gap-2 mb-8">
-                <span className="text-4xl font-display font-bold text-agro-green leading-none">
+                <span className="text-3xl sm:text-4xl font-display font-bold text-agro-green leading-none">
                   Nu. {product.price.toLocaleString()}
                 </span>
                 <span className="text-sm text-zinc-400 font-medium mb-1 opacity-60">/ Bag</span>
@@ -328,7 +328,7 @@ export default function ProductDetailPage() {
               />
 
               {/* Add to Cart Section */}
-              <div className="p-6 bg-zinc-950 rounded-3xl shadow-xl relative overflow-hidden mb-10">
+              <div className="p-4 sm:p-6 bg-zinc-950 rounded-2xl sm:rounded-3xl shadow-xl relative overflow-hidden mb-8 sm:mb-10">
                 {/* Visual mesh */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-agro-green/10 rounded-full blur-[40px]" />
                 
@@ -462,7 +462,7 @@ export default function ProductDetailPage() {
         </div>
 
         {/* DETAILS TABS */}
-        <div className="mt-24">
+        <div className="mt-12 sm:mt-24">
           <Tabs defaultValue="nutrition" className="w-full">
             <div className="flex justify-start sm:justify-center overflow-x-auto scrollbar-hide border-b border-zinc-100 dark:border-white/5 mb-10 pb-px">
               <TabsList className="bg-transparent h-auto p-0 gap-6 sm:gap-8 flex-nowrap min-w-max">
@@ -482,7 +482,7 @@ export default function ProductDetailPage() {
             </div>
 
             <TabsContent value="nutrition" className="mt-0 outline-none">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
                 {[
                   { label: 'Protien CONTENT', value: product.nutrients?.protein || '0', sub: 'Essential Amino Acids', icon: Zap, color: 'from-blue-500 to-indigo-600' },
                   { label: 'Fat CONTENT', value: product.nutrients?.fat || '0', sub: 'Healthy Omega-3/6', icon: Sparkles, color: 'from-amber-400 to-orange-500' },
@@ -613,12 +613,12 @@ export default function ProductDetailPage() {
                    { q: 'How long can I store unopened bags?', a: 'When kept in a cool, dry place, the nutritional value is guaranteed for up to 6 months from the date of manufacture.' },
                    { q: 'Can I pick up orders directly from the warehouse?', a: 'You can choose any of our 20+ distribution centers during checkout for convenient pickup within 24-48 hours.' }
                  ].map((item, i) => (
-                   <div key={i} className="p-8 rounded-[2rem] bg-zinc-50 dark:bg-white/5 border border-zinc-100 dark:border-white/5 group transition-all">
-                     <h3 className="flex items-center gap-3 font-display font-black text-xl mb-3">
-                       <div className="w-8 h-8 rounded-full bg-agro-green text-white flex items-center justify-center text-xs">Q</div>
+                   <div key={i} className="p-5 sm:p-8 rounded-2xl sm:rounded-[2rem] bg-zinc-50 dark:bg-white/5 border border-zinc-100 dark:border-white/5 group transition-all">
+                     <h3 className="flex items-start sm:items-center gap-2 sm:gap-3 font-display font-black text-base sm:text-xl mb-2 sm:mb-3">
+                       <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-agro-green text-white flex items-center justify-center text-[10px] sm:text-xs flex-shrink-0">Q</div>
                        {item.q}
                      </h3>
-                     <p className="text-zinc-500 dark:text-zinc-400 pl-11 text-lg leading-relaxed">{item.a}</p>
+                     <p className="text-zinc-500 dark:text-zinc-400 pl-9 sm:pl-11 text-sm sm:text-lg leading-relaxed">{item.a}</p>
                    </div>
                  ))}
                </div>

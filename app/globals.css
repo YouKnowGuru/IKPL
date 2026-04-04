@@ -317,21 +317,39 @@ html { scroll-behavior: smooth; }
 
 /* ─── Responsive typography scale ───────────────────────── */
 .text-hero {
-  font-size: clamp(2.5rem, 8vw, 7rem);
+  font-size: clamp(2rem, 8vw, 7rem);
   line-height: 1;
   letter-spacing: -0.03em;
 }
 
 .text-display {
-  font-size: clamp(1.8rem, 5vw, 4.5rem);
+  font-size: clamp(1.5rem, 5vw, 4.5rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
+.text-display-lg {
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
 .text-title {
-  font-size: clamp(1.3rem, 3vw, 2.5rem);
+  font-size: clamp(1.2rem, 3vw, 2.5rem);
   line-height: 1.2;
   letter-spacing: -0.01em;
+}
+
+/* ─── Scrollbar hide (for pill menus) ───────────────────── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Mobile touch-friendly card ─────────────────────────── */
+@media (max-width: 640px) {
+  .card-hover:hover {
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
 }
 
 /* ─── Selection styles ───────────────────────────────────── */

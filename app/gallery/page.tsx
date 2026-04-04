@@ -60,7 +60,7 @@ export default function GalleryPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight leading-none mb-8 text-white"
+              className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight leading-none mb-4 sm:mb-8 text-white"
            >
              Our <span className="gradient-text-animate">Gallery</span>
            </motion.h1>
@@ -68,7 +68,7 @@ export default function GalleryPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="max-w-2xl text-zinc-400 text-lg md:text-xl font-medium leading-relaxed"
+              className="max-w-2xl text-zinc-400 text-sm sm:text-lg md:text-xl font-medium leading-relaxed"
            >
              Capturing our journey across Bhutan's agricultural landscape. From our logistics hubs to the farms we serve daily.
            </motion.p>
@@ -76,14 +76,14 @@ export default function GalleryPage() {
       </section>
 
       {/* ── Category Filter Strip ───────────────────────────────── */}
-      <div className="sticky top-20 z-40 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl border-y border-zinc-100 dark:border-white/5 py-6">
-        <div className="container mx-auto px-4 flex flex-wrap items-center justify-center gap-4">
+      <div className="sticky top-14 sm:top-20 z-40 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl border-y border-zinc-100 dark:border-white/5 py-3 sm:py-6">
+        <div className="container mx-auto px-4 flex flex-wrap items-center justify-center gap-2 sm:gap-4">
            {CATEGORIES.map((cat, i) => (
              <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={cn(
-                   "group relative px-6 py-2.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all",
+                   "group relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl text-[10px] sm:text-xs font-black uppercase tracking-widest transition-all",
                    activeCategory === cat 
                      ? "bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 shadow-xl" 
                      : "text-zinc-400 hover:text-agro-green"

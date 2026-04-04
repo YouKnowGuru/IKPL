@@ -69,7 +69,7 @@ export default function ContactPage() {
     {
       icon: Mail,
       label: 'Email',
-      lines: settings.contactInfo?.email ? settings.contactInfo.email.split(', ') : ['contact@ikpl.com', 'support@ikpl.com'],
+      lines: settings.contactInfo?.email ? settings.contactInfo.email.split(', ') : ['indrakausilaprivatelimitedcomp@gmail.com'],
       color: 'from-orange-500 to-amber-500',
       bg: 'bg-orange-50 dark:bg-orange-950/20',
     },
@@ -132,7 +132,7 @@ export default function ContactPage() {
           <h1 className="text-hero font-display font-bold text-white mb-4">
             Contact <span className="gradient-text-animate">IKPL</span>
           </h1>
-          <p className="text-zinc-300 text-xl max-w-xl mx-auto leading-relaxed">
+          <p className="text-zinc-300 text-sm sm:text-xl max-w-xl mx-auto leading-relaxed">
             Our team of farming experts is ready to help — whether you have a quick question or need a full consultation.
           </p>
         </div>
@@ -141,15 +141,15 @@ export default function ContactPage() {
       {/* ── CONTACT INFO CARDS ────────────────────────────────────── */}
       <section className="py-16 bg-white dark:bg-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 stagger-children">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 stagger-children">
             {contactBoxes.map(({ icon: Icon, label, lines, color, bg }) => (
-              <div key={label} className={`group p-7 rounded-3xl ${bg} border border-transparent hover:border-agro-green/20 dark:hover:border-agro-green/20 transition-all duration-500 card-hover`}>
-                <div className={`w-12 h-12 bg-gradient-to-br ${color} rounded-2xl flex items-center justify-center mb-5 shadow-md group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}>
-                  <Icon className="h-6 w-6 text-white" />
+              <div key={label} className={`group p-3 sm:p-7 rounded-2xl sm:rounded-3xl ${bg} border border-transparent hover:border-agro-green/20 dark:hover:border-agro-green/20 transition-all duration-500 card-hover`}>
+                <div className={`w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-br ${color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-2 sm:mb-5 shadow-md group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}>
+                  <Icon className="h-3.5 w-3.5 sm:h-6 sm:w-6 text-white" />
                 </div>
-                <h3 className="font-display font-bold text-base mb-2">{label}</h3>
+                <h3 className="font-display font-bold text-[10px] sm:text-base mb-1 sm:mb-2">{label}</h3>
                 {lines.map((line: string, i: number) => (
-                  <p key={i} className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">{line}</p>
+                  <p key={i} className="text-zinc-500 dark:text-zinc-400 text-[10px] sm:text-sm leading-relaxed break-all">{line}</p>
                 ))}
               </div>
             ))}
@@ -164,7 +164,7 @@ export default function ContactPage() {
 
             {/* ── Contact Form ─── */}
             <div className="lg:col-span-3">
-              <div className="bg-white dark:bg-zinc-900 rounded-3xl p-8 md:p-10 border border-zinc-100 dark:border-white/5 shadow-sm">
+              <div className="bg-white dark:bg-zinc-900 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 border border-zinc-100 dark:border-white/5 shadow-sm">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-10 h-10 bg-agro-green/10 rounded-2xl flex items-center justify-center">
                     <MessageSquare className="h-5 w-5 text-agro-green" />
@@ -185,7 +185,7 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid grid-cols-2 gap-4 md:gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5">
                       <div className="space-y-2">
                         <Label htmlFor="name" className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Full Name</Label>
                         <Input

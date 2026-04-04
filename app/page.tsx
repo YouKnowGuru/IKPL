@@ -317,7 +317,7 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════
           HERO — Modern SaaS-Level Framer Motion
       ════════════════════════════════════════════════════════════ */}
-      <section ref={heroRef} className="relative min-h-[100vh] flex items-center pt-24 pb-12 overflow-hidden bg-zinc-950">
+      <section ref={heroRef} className="relative min-h-[85vh] sm:min-h-[100vh] flex items-center pt-20 sm:pt-24 pb-8 sm:pb-12 overflow-hidden bg-zinc-950">
 
         {/* Animated Mesh / Blobs Background */}
         <div className="absolute inset-0 z-0 opacity-40">
@@ -342,36 +342,36 @@ export default function HomePage() {
               variants={staggerContainer}
               initial="hidden"
               animate="show"
-              className="flex flex-col text-center lg:text-left items-center lg:items-start space-y-5 sm:space-y-6 max-w-3xl mx-auto lg:mx-0"
+              className="flex flex-col text-center lg:text-left items-center lg:items-start space-y-3 sm:space-y-6 max-w-3xl mx-auto lg:mx-0"
             >
 
 
-              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-agro-orange text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full backdrop-blur-md w-fit shadow-[0_0_20px_rgba(255,174,0,0.1)]">
-                <Sparkles className="h-4 w-4" />
+              <motion.div variants={fadeUp} className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/5 border border-white/10 text-agro-orange text-[10px] sm:text-sm font-semibold px-3 sm:px-5 py-2 sm:py-2.5 rounded-full backdrop-blur-md w-fit shadow-[0_0_20px_rgba(255,174,0,0.1)]">
+                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span className="text-zinc-200 tracking-wide">Premium Wholesale</span>
               </motion.div>
 
-              <motion.h1 variants={fadeUp} className="font-display font-extrabold text-white text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.05] tracking-tight">
+              <motion.h1 variants={fadeUp} className="font-display font-extrabold text-white text-2xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] sm:leading-[1.05] tracking-tight">
                 Bhutan’s Trusted <br className="hidden sm:block" />
                 <span className="bg-gradient-to-r from-agro-orange via-amber-400 to-agro-green bg-clip-text text-transparent">Agriculture Partner</span>
               </motion.h1>
 
 
-              <motion.p variants={fadeUp} className="text-xl sm:text-2xl text-zinc-400 font-medium max-w-xl">
+              <motion.p variants={fadeUp} className="text-sm sm:text-xl md:text-2xl text-zinc-400 font-medium max-w-xl leading-relaxed">
                 Delivering reliable supply chains of premium noodles and high-quality livestock feeds.
               </motion.p>
 
               <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center gap-4 pt-4">
                 <Link href="/products" className="w-full sm:w-auto">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button className="h-14 px-8 w-full btn-glow-orange bg-gradient-to-r from-agro-orange to-amber-500 hover:from-agro-orange hover:to-amber-500 text-black font-bold text-lg rounded-2xl shadow-xl flex items-center justify-center gap-2">
-                      <Package className="h-5 w-5" /> Explore Products
+                    <Button className="h-11 sm:h-14 px-6 sm:px-8 w-full btn-glow-orange bg-gradient-to-r from-agro-orange to-amber-500 hover:from-agro-orange hover:to-amber-500 text-black font-bold text-sm sm:text-lg rounded-xl sm:rounded-2xl shadow-xl flex items-center justify-center gap-2">
+                      <Package className="h-4 w-4 sm:h-5 sm:w-5" /> Explore Products
                     </Button>
                   </motion.div>
                 </Link>
                 <Link href="/contact" className="w-full sm:w-auto">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button variant="outline" className="h-14 px-8 w-full bg-white/5 hover:bg-white/10 border-white/10 text-white font-bold text-lg rounded-2xl backdrop-blur-md transition-all flex items-center justify-center">
+                    <Button variant="outline" className="h-11 sm:h-14 px-6 sm:px-8 w-full bg-white/5 hover:bg-white/10 border-white/10 text-white font-bold text-sm sm:text-lg rounded-xl sm:rounded-2xl backdrop-blur-md transition-all flex items-center justify-center">
                       Contact Us
                     </Button>
                   </motion.div>
@@ -384,12 +384,12 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className="relative w-full h-[400px] sm:h-[500px] lg:h-[650px] flex items-center justify-center mt-8 lg:mt-0"
+              className="relative w-full h-[280px] sm:h-[500px] lg:h-[650px] flex items-center justify-center mt-4 sm:mt-8 lg:mt-0"
             >
 
 
               {/* Main Image Base with Slider */}
-              <motion.div style={{ y: y1 }} className="absolute right-0 lg:-right-4 w-[85%] h-[85%] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_30px_100px_rgba(255,174,0,0.15)] flex items-center justify-center z-10 glass-dark">
+              <motion.div style={{ y: y1 }} className="absolute right-0 lg:-right-4 w-[90%] sm:w-[85%] h-[85%] rounded-2xl sm:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_30px_100px_rgba(255,174,0,0.15)] flex items-center justify-center z-10 glass-dark">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentHeroIndex}
@@ -433,7 +433,7 @@ export default function HomePage() {
               <motion.div
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-[8%] left-[-4%] z-20 w-[42%] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-dark hidden sm:block"
+                className="absolute top-[8%] left-[-4%] z-20 w-[35%] sm:w-[42%] aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-dark hidden xs:block"
               >
                 <Image src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&q=80" alt="Premium Noodles" fill sizes="33vw" className="object-cover opacity-90 hover:scale-110 transition-transform duration-700" />
               </motion.div>
@@ -442,7 +442,7 @@ export default function HomePage() {
               {/* Floating Element 2 - Feed / Livestock (Smaller on mobile) */}
               <motion.div
                 style={{ y: y2 }}
-                className="absolute bottom-[2%] left-[4%] z-20 w-[45%] sm:w-[50%] aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-dark p-2"
+                className="absolute bottom-[2%] left-[4%] z-20 w-[35%] sm:w-[50%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-dark p-1 sm:p-2"
               >
                 <div className="relative w-full h-full rounded-xl overflow-hidden">
                   <Image src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&q=80" alt="Livestock" fill sizes="33vw" className="object-cover opacity-90 hover:scale-110 transition-transform duration-700" />
@@ -455,7 +455,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8, type: "spring" }}
-                className="absolute top-[5%] right-[-5%] lg:right-[-2%] z-30 bg-white/10 backdrop-blur-3xl border border-white/20 text-white rounded-2xl p-4 shadow-2xl"
+                className="absolute top-[5%] right-[-5%] lg:right-[-2%] z-30 bg-white/10 backdrop-blur-3xl border border-white/20 text-white rounded-xl sm:rounded-2xl p-2.5 sm:p-4 shadow-2xl hidden xs:block"
               >
                 <div className="flex items-center gap-3">
                   <div className="bg-agro-orange text-zinc-950 p-2 rounded-xl flex items-center justify-center">
@@ -472,7 +472,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, type: "spring" }}
-                className="absolute bottom-[10%] right-[-5%] z-30 bg-white/10 backdrop-blur-3xl border border-white/20 text-white rounded-2xl p-4 shadow-2xl flex flex-col gap-1"
+                className="absolute bottom-[10%] right-[-5%] z-30 bg-white/10 backdrop-blur-3xl border border-white/20 text-white rounded-xl sm:rounded-2xl p-2.5 sm:p-4 shadow-2xl flex flex-col gap-1 hidden xs:block"
               >
                 <div className="flex -space-x-2 mb-1">
                   <div className="w-8 h-8 rounded-full bg-agro-green border border-white/20 flex items-center justify-center font-bold text-[10px]">P</div>
@@ -549,20 +549,20 @@ export default function HomePage() {
       <section className="py-20 bg-zinc-950 relative overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-8" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {stats.map(({ value, suffix, label, icon: Icon }, i) => (
               <div
                 key={label}
-                className="group glass-dark rounded-3xl p-7 text-center border border-white/5 hover:border-agro-green/30 transition-all duration-500"
+                className="group glass-dark rounded-2xl sm:rounded-3xl p-4 sm:p-7 text-center border border-white/5 hover:border-agro-green/30 transition-all duration-500"
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
-                <div className="w-11 h-11 bg-agro-green/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-agro-green/25 transition-colors">
-                  <Icon className="h-5 w-5 text-agro-green" />
+                <div className="w-9 h-9 sm:w-11 sm:h-11 bg-agro-green/15 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-2 sm:mb-4 group-hover:bg-agro-green/25 transition-colors">
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-agro-green" />
                 </div>
-                <div className="stat-number text-4xl text-white mb-1.5 gradient-text">
+                <div className="stat-number text-2xl sm:text-4xl text-white mb-1 sm:mb-1.5 gradient-text">
                   <AnimatedCounter end={value} suffix={suffix} />
                 </div>
-                <div className="text-zinc-500 text-xs font-medium uppercase tracking-wider">{label}</div>
+                <div className="text-zinc-500 text-[9px] sm:text-xs font-medium uppercase tracking-wider">{label}</div>
               </div>
             ))}
           </div>
@@ -570,7 +570,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED PRODUCTS ─────────────────────────────────────────── */}
-      <section className="py-20 bg-white dark:bg-zinc-900">
+      <section className="py-10 sm:py-20 bg-white dark:bg-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 mb-12">
             <div>
@@ -628,7 +628,7 @@ export default function HomePage() {
       </section>
 
       {/* ── STRATEGIC PARTNERS ────────────────────────────────────────── */}
-      <section className="py-24 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-white/5">
+      <section className="py-12 sm:py-24 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-white/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
               <div className="lg:w-1/3">
@@ -636,15 +636,15 @@ export default function HomePage() {
                     <Handshake className="h-4 w-4" />
                     Our Partners
                  </div>
-                 <h2 className="text-4xl font-display font-bold leading-tight mb-4">Strategic <br /><span className="gradient-text">Wholesale Network</span></h2>
-                 <p className="text-zinc-500 dark:text-zinc-400 text-lg">We bridge the gap between world-class manufacturing and local farmers through elite brand partnerships.</p>
+                 <h2 className="text-2xl sm:text-4xl font-display font-bold leading-tight mb-4">Strategic <br className="hidden sm:block" /><span className="gradient-text">Wholesale Network</span></h2>
+                 <p className="text-zinc-500 dark:text-zinc-400 text-sm sm:text-lg">We bridge the gap between world-class manufacturing and local farmers through elite brand partnerships.</p>
               </div>
               <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
                  {[
                    { name: 'Noodles', label: 'Quality Food Products', desc: 'Premium food range catering to households across the kingdom.', href: null },
                    { name: 'UDOR Feeds', label: 'Animal Nutrition', desc: 'Expertly formulated livestock feeds for farmers and cooperatives.', href: '/udoor' }
                  ].map((p, i) => (
-                   <div key={i} className="group p-8 rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-950 border border-zinc-100 dark:border-white/5 card-hover shadow-sm flex flex-col">
+                   <div key={i} className="group p-5 sm:p-8 rounded-2xl sm:rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-950 border border-zinc-100 dark:border-white/5 card-hover shadow-sm flex flex-col">
                       <div className="text-agro-green font-black text-2xl mb-2 group-hover:scale-105 transition-transform">{p.name}</div>
                       <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-4">{p.label}</div>
                       <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8 flex-1">{p.desc}</p>
@@ -694,11 +694,11 @@ export default function HomePage() {
       </section>
 
       {/* ── ABOUT HIGHLIGHT ───────────────────────────────────────────── */}
-      <section className="py-16 bg-white dark:bg-zinc-900 overflow-hidden">
+      <section className="py-10 sm:py-16 bg-white dark:bg-zinc-900 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative order-2 lg:order-1">
-              <div className="relative h-[380px] rounded-3xl overflow-hidden shadow-xl border border-zinc-100 dark:border-white/5">
+              <div className="relative h-[250px] sm:h-[380px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-zinc-100 dark:border-white/5">
 
                 <Image
                   src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=900&q=80"
@@ -709,20 +709,20 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
-              <div className="absolute -bottom-5 -right-4 sm:-right-6 bg-white dark:bg-zinc-900 rounded-3xl p-5 shadow-2xl border border-zinc-100 dark:border-white/5">
+              <div className="absolute -bottom-5 -right-2 sm:-right-6 bg-white dark:bg-zinc-900 rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-2xl border border-zinc-100 dark:border-white/5">
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 bg-agro-orange rounded-2xl flex items-center justify-center">
                     <TrendingUp className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <div className="font-display font-bold text-xl gradient-text">+47%</div>
-                    <div className="text-zinc-400 text-xs">Avg. Yield Increase</div>
+                    <div className="font-display font-bold text-lg sm:text-xl gradient-text">+47%</div>
+                    <div className="text-zinc-400 text-[10px] sm:text-xs">Avg. Yield Increase</div>
                   </div>
                 </div>
               </div>
-              <div className="absolute -top-4 -left-4 bg-agro-orange rounded-2xl px-5 py-3 shadow-xl">
-                <div className="text-white font-display font-bold text-3xl">20+</div>
-                <div className="text-white/80 text-xs">Years Experience</div>
+              <div className="absolute -top-4 -left-2 sm:-left-4 bg-agro-orange rounded-xl sm:rounded-2xl px-3 sm:px-5 py-2 sm:py-3 shadow-xl">
+                <div className="text-white font-display font-bold text-xl sm:text-3xl">20+</div>
+                <div className="text-white/80 text-[10px] sm:text-xs">Years Experience</div>
               </div>
             </div>
             <div className="order-1 lg:order-2">
@@ -764,13 +764,13 @@ export default function HomePage() {
 
       {/* ── OUR TEAM ─────────────────────────────────────────────────── */}
       {team.length > 0 && (
-        <section className="py-20 bg-zinc-50 dark:bg-zinc-950/50">
+        <section className="py-10 sm:py-20 bg-zinc-50 dark:bg-zinc-950/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-lg mx-auto mb-12">
               <div className="inline-flex items-center gap-2 bg-agro-green/10 text-agro-green text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest mb-3">
                 <Users className="h-3.5 w-3.5" /> Meet the Experts
               </div>
-              <h2 className="text-3xl font-display font-bold">
+              <h2 className="text-2xl sm:text-3xl font-display font-bold">
                 Our Dedicated <span className="gradient-text">Leadership</span>
               </h2>
 
@@ -791,7 +791,7 @@ export default function HomePage() {
                   transition={{ delay: i * 0.05 }}
                   className="group"
                 >
-                  <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden mb-4 shadow-sm border border-zinc-100 dark:border-white/5">
+                  <div className="relative h-44 sm:h-72 rounded-xl sm:rounded-2xl overflow-hidden mb-2 sm:mb-4 shadow-sm border border-zinc-100 dark:border-white/5">
 
                     <Image
                       src={member.photo}
@@ -820,7 +820,7 @@ export default function HomePage() {
 
       {/* ── TESTIMONIALS ─────────────────────────────────────────────── */}
 
-      <section className="py-20 bg-zinc-50 dark:bg-zinc-950">
+      <section className="py-10 sm:py-20 bg-zinc-50 dark:bg-zinc-950">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 bg-agro-orange/10 text-agro-orange text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-4">
@@ -903,7 +903,7 @@ export default function HomePage() {
 
       {/* ── FINAL CTA ──────────────────────────────────────────────────── */}
 
-      <section className="relative py-20 overflow-hidden bg-zinc-950">
+      <section className="relative py-12 sm:py-20 overflow-hidden bg-zinc-950">
         <div className="absolute top-0 left-1/2 w-[500px] h-[400px] bg-agro-green/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-64 h-64 bg-agro-orange/5 rounded-full blur-[80px]" />
         <div className="absolute inset-0 hero-grid opacity-10" />
@@ -911,10 +911,10 @@ export default function HomePage() {
           <div className="inline-flex items-center gap-2 bg-agro-green/15 border border-agro-green/30 text-agro-green text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest mb-6">
             <Sparkles className="h-3.5 w-3.5" /> Join the IKPL Family
           </div>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-4 max-w-2xl mx-auto leading-tight">
             Ready to Transform Your <span className="text-agro-orange">Farm's Potential?</span>
           </h2>
-          <p className="text-zinc-400 text-lg max-w-md mx-auto mb-8 leading-relaxed">
+          <p className="text-zinc-400 text-sm sm:text-lg max-w-md mx-auto mb-6 sm:mb-8 leading-relaxed">
             Access premium feeds, expert consultations, and exclusive farmer rewards.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -952,9 +952,9 @@ export default function HomePage() {
             )}
 
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-6 mt-12 opacity-40">
+          <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6 mt-8 sm:mt-12 opacity-40">
             {['No Hidden Fees', 'Free Expert Advice', 'Cancel Anytime', '24/7 Support'].map((t) => (
-              <div key={t} className="flex items-center gap-2 text-zinc-400 text-sm">
+              <div key={t} className="flex items-center gap-1.5 sm:gap-2 text-zinc-400 text-xs sm:text-sm">
                 <CheckCircle className="h-3.5 w-3.5 text-agro-green" /> {t}
               </div>
             ))}

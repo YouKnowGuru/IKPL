@@ -66,7 +66,7 @@ const sections = [
     id: 'contact',
     icon: Mail,
     title: '8. Contact Us',
-    content: 'If you have any questions about this privacy policy or our data practices, please contact our Privacy Officer at privacy@ikpl.com or write to us at our registered office address.',
+    content: 'If you have any questions about this privacy policy or our data practices, please contact our Privacy Officer at indrakausilaprivatelimitedcomp@gmail.com or write to us at our registered office address.',
     color: 'from-rose-500 to-pink-500',
     bg: 'bg-rose-50 dark:bg-rose-950/20',
   },
@@ -103,7 +103,7 @@ export default function PrivacyPage() {
           <p className="text-zinc-300 text-xl max-w-xl mx-auto leading-relaxed">
             We are committed to protecting your personal data and ensuring your privacy at every step.
           </p>
-          <p className="text-zinc-500 text-sm mt-4">Last updated: January 1, 2024</p>
+          <p className="text-zinc-500 text-sm mt-4">Last updated: April 4, 2026</p>
         </div>
       </section>
 
@@ -191,8 +191,8 @@ export default function PrivacyPage() {
                     <h4 className="font-bold mb-1">Question about privacy?</h4>
                     <p className="text-zinc-500 text-sm">
                       Email our Privacy Officer at{' '}
-                      <a href="mailto:privacy@ikpl.com" className="text-agro-green font-semibold hover:underline">
-                        privacy@ikpl.com
+                      <a href="mailto:indrakausilaprivatelimitedcomp@gmail.com" className="text-agro-green font-semibold hover:underline">
+                        indrakausilaprivatelimitedcomp@gmail.com
                       </a>{' '}
                       or{' '}
                       <Link href="/contact" className="text-agro-orange font-semibold hover:underline">

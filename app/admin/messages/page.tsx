@@ -253,7 +253,7 @@ export default function AdminMessages() {
                   />
                   <div className="flex justify-between items-center">
                     <p className="text-[10px] text-zinc-500 font-medium">
-                      Pressing send will instantly dispatch an email from <strong className="text-zinc-700 dark:text-zinc-300">support@ikpl.com</strong>
+                      Pressing send will instantly dispatch an email from <strong className="text-zinc-700 dark:text-zinc-300">indrakausilaprivatelimitedcomp@gmail.com</strong>
                     </p>
                     <Button 
                       onClick={handleReply} 

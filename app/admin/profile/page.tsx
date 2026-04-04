@@ -167,7 +167,7 @@ export default function AdminProfilePage() {
                   value={profileData.email}
                   onChange={(e) => setProfileData(p => ({ ...p, email: e.target.value }))}
                   className="pl-11 h-12 rounded-2xl bg-zinc-50 dark:bg-zinc-800/50 border-transparent focus:ring-agro-green/20"
-                  placeholder="admin@ikpl.com"
+                  placeholder="indrakausilaprivatelimitedcomp@gmail.com"
                   required
                 />
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />

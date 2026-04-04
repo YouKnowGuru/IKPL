@@ -93,7 +93,7 @@ const sections = [
     id: 'contact',
     icon: Phone,
     title: '11. Contact Information',
-    content: 'For questions about these terms, please contact our legal team at legal@ikpl.com or call our support line. We aim to respond to all legal inquiries within 5 business days.',
+    content: 'For questions about these terms, please contact our legal team at indrakausilaprivatelimitedcomp@gmail.com or call our support line. We aim to respond to all legal inquiries within 5 business days.',
     color: 'from-teal-500 to-emerald-500',
     bg: 'bg-teal-50 dark:bg-teal-950/20',
   },
@@ -130,7 +130,7 @@ export default function TermsPage() {
           <p className="text-zinc-300 text-xl max-w-xl mx-auto leading-relaxed">
             Please read these terms carefully before using our services. They govern your relationship with IKPL.
           </p>
-          <p className="text-zinc-500 text-sm mt-4">Effective: January 1, 2024 &bull; Version 3.0</p>
+          <p className="text-zinc-500 text-sm mt-4">Effective: April 4, 2026 &bull; Version 4.0</p>
         </div>
       </section>
 
@@ -164,7 +164,7 @@ export default function TermsPage() {
                 <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-white/5">
                   <p className="text-xs text-zinc-400 leading-relaxed">
                     By using our platform, you agree to all sections listed. Questions? Contact{' '}
-                    <a href="mailto:legal@ikpl.com" className="text-agro-orange hover:underline">legal@ikpl.com</a>
+                    <a href="mailto:indrakausilaprivatelimitedcomp@gmail.com" className="text-agro-orange hover:underline">indrakausilaprivatelimitedcomp@gmail.com</a>
                   </p>
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default function TermsPage() {
                     <h4 className="font-bold mb-1">Legal Inquiry?</h4>
                     <p className="text-zinc-500 text-sm">
                       For any legal questions, email{' '}
-                      <a href="mailto:legal@ikpl.com" className="text-agro-orange font-semibold hover:underline">legal@ikpl.com</a>
+                      <a href="mailto:indrakausilaprivatelimitedcomp@gmail.com" className="text-agro-orange font-semibold hover:underline">indrakausilaprivatelimitedcomp@gmail.com</a>
                       {' '}or{' '}
                       <Link href="/contact" className="text-agro-green font-semibold hover:underline">contact our team</Link>.
                     </p>

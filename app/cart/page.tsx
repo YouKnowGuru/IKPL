@@ -57,7 +57,7 @@ export default function CartPage() {
           <div className="inline-flex items-center gap-2 text-agro-green bg-agro-green/10 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] mb-3">
             <ShoppingCart className="h-3.5 w-3.5" /> Shopping Bag
           </div>
-          <h1 className="text-3xl font-display font-bold">Review <span className="gradient-text">Selection</span></h1>
+          <h1 className="text-2xl sm:text-3xl font-display font-bold">Review <span className="gradient-text">Selection</span></h1>
         </div>
         <div className="flex items-center gap-3 text-xs font-bold text-zinc-400">
            <span className="text-zinc-900 dark:text-white">{items.length} Items</span>
@@ -67,7 +67,7 @@ export default function CartPage() {
       </div>
 
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 xl:gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 xl:gap-16 items-start">
         {/* CART ITEMS LIST */}
         <div className="lg:col-span-2 space-y-6">
           <AnimatePresence mode="popLayout">
@@ -83,7 +83,7 @@ export default function CartPage() {
                 {/* Visual mesh */}
                 <div className="absolute -top-10 -right-10 w-24 h-24 bg-agro-green/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 
-                <div className="relative h-32 w-full sm:h-24 sm:w-24 rounded-2xl overflow-hidden bg-zinc-50 dark:bg-zinc-800 flex-shrink-0 border border-zinc-100 dark:border-white/5">
+                <div className="relative h-28 w-full sm:h-24 sm:w-24 rounded-xl sm:rounded-2xl overflow-hidden bg-zinc-50 dark:bg-zinc-800 flex-shrink-0 border border-zinc-100 dark:border-white/5">
 
                   <Image 
                     src={item.product.image || '/images/placeholder-product.jpg'} 
@@ -96,11 +96,11 @@ export default function CartPage() {
                 <div className="flex-1 text-center sm:text-left">
                   <p className="text-[9px] font-bold text-agro-green uppercase tracking-[0.2em] mb-1">{item.product.category}</p>
                   <Link href={`/product/${item.product._id}`}>
-                    <h3 className="text-xl font-display font-bold hover:text-agro-green transition-colors mb-1 leading-tight">
+                    <h3 className="text-base sm:text-xl font-display font-bold hover:text-agro-green transition-colors mb-1 leading-tight">
                       {item.product.name}
                     </h3>
                   </Link>
-                  <p className="text-lg font-bold text-zinc-900 dark:text-white mb-3">Nu. {item.product.price.toLocaleString()}</p>
+                  <p className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-2 sm:mb-3">Nu. {item.product.price.toLocaleString()}</p>
                   
                   <div className="flex items-center justify-center sm:justify-start gap-3">
                     <div className="flex items-center bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/10 rounded-xl h-10 w-fit px-1.5">

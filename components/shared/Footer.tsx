@@ -37,7 +37,7 @@ const footerLinks = {
 // Default fallback values when settings are not yet configured
 const DEFAULTS = {
   phone: '+1 (800) IKPL-FEED',
-  email: 'contact@ikpl.com',
+  email: 'indrakausilaprivatelimitedcomp@gmail.com',
   address: '123 Farm Tech Avenue, IKPL Plaza, Suite 900',
   facebook: '#',
   instagram: '#',
