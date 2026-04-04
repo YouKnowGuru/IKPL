@@ -1,0 +1,28 @@
+﻿
+> feed-distribution-platform@1.0.0 lint
+> next lint
+
+node.exe : Invalid 
+project directory 
+provided, no such 
+directory: E:\feed\feed-
+platform\lint
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo      
+        : NotSpecified: 
+(I    nvalid 
+project...d-pl    
+atform\lint:String) [   
+ ], RemoteException
+    + 
+FullyQualifiedError    
+Id : NativeCommandErr   
+ or
+ 
