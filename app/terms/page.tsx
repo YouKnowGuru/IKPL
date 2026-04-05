@@ -116,7 +116,7 @@ export default function TermsPage() {
     <div className="flex flex-col overflow-x-hidden">
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className="relative py-24 bg-zinc-950 overflow-hidden">
+      <section className="relative py-16 sm:py-24 bg-zinc-950 overflow-hidden">
         <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-agro-orange/10 rounded-full blur-[120px] animate-blob delay-2000" />
         <div className="absolute inset-0 hero-grid opacity-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -127,7 +127,7 @@ export default function TermsPage() {
           <h1 className="text-hero font-display font-bold text-white mb-4">
             Terms & <span className="text-agro-orange">Conditions</span>
           </h1>
-          <p className="text-zinc-300 text-xl max-w-xl mx-auto leading-relaxed">
+          <p className="text-zinc-300 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed">
             Please read these terms carefully before using our services. They govern your relationship with IKPL.
           </p>
           <p className="text-zinc-500 text-sm mt-4">Effective: April 4, 2026 &bull; Version 4.0</p>
@@ -135,9 +135,9 @@ export default function TermsPage() {
       </section>
 
       {/* ── Main Content ──────────────────────────────────────────── */}
-      <section className="py-20 bg-white dark:bg-zinc-900">
+      <section className="py-12 sm:py-20 bg-white dark:bg-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 max-w-6xl mx-auto">
 
             {/* Sidebar TOC */}
             <aside className="lg:col-span-3 hidden lg:block">
@@ -190,15 +190,15 @@ export default function TermsPage() {
                     <div
                       key={id}
                       id={id}
-                      className={`group p-7 rounded-3xl ${bg} border border-transparent hover:border-agro-orange/20 transition-all duration-500 card-hover`}
+                      className={`group p-5 sm:p-7 rounded-3xl ${bg} border border-transparent hover:border-agro-orange/20 transition-all duration-500 card-hover`}
                     >
-                      <div className="flex items-start gap-5">
-                        <div className={`w-11 h-11 bg-gradient-to-br ${color} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}>
-                          <Icon className="h-5 w-5 text-white" />
+                      <div className="flex items-start gap-4 sm:gap-5">
+                        <div className={`w-9 h-9 sm:w-11 sm:h-11 bg-gradient-to-br ${color} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}>
+                          <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                         </div>
                         <div>
-                          <h2 className="font-display font-bold text-lg mb-2">{title}</h2>
-                          <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed text-sm">{text}</p>
+                          <h2 className="font-display font-bold text-base sm:text-lg mb-2">{title}</h2>
+                          <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed text-xs sm:text-sm">{text}</p>
                         </div>
                       </div>
                     </div>
@@ -207,12 +207,12 @@ export default function TermsPage() {
               )}
 
               {/* Footer note */}
-              <div className="mt-10 p-6 rounded-3xl bg-agro-orange/5 border border-agro-orange/15">
-                <div className="flex items-start gap-4">
-                  <Gavel className="h-6 w-6 text-agro-orange flex-shrink-0 mt-0.5" />
+              <div className="mt-8 sm:mt-10 p-4 sm:p-6 rounded-3xl bg-agro-orange/5 border border-agro-orange/15">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <Gavel className="h-5 w-5 sm:h-6 sm:w-6 text-agro-orange flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold mb-1">Legal Inquiry?</h4>
-                    <p className="text-zinc-500 text-sm">
+                    <p className="text-zinc-500 text-xs sm:text-sm">
                       For any legal questions, email{' '}
                       <a href="mailto:indrakausilaprivatelimitedcomp@gmail.com" className="text-agro-orange font-semibold hover:underline">indrakausilaprivatelimitedcomp@gmail.com</a>
                       {' '}or{' '}
