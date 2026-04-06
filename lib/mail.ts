@@ -56,7 +56,7 @@ const generateOrderInvoiceHtml = (title: string, message: string, order: any) =>
             <div style="font-size: 12px; color: #71717a;">Qty: ${item.quantity}</div>
         </td>
         <td style="padding: 15px 0; text-align: right; color: #ffffff; font-weight: 600;">
-            Nu. ${(item.price * item.quantity).toLocaleString()}
+            ${item.price > 0 ? `Nu. ${(item.price * item.quantity).toLocaleString()}` : ''}
         </td>
     </tr>
   `).join('');
@@ -99,10 +99,12 @@ const generateOrderInvoiceHtml = (title: string, message: string, order: any) =>
                         </tr>
                         ${itemsHtml}
                         <tr>
-                            <td style="padding-top: 20px; font-weight: 700; color: #ffffff;">Total Amount</td>
-                            <td style="padding-top: 20px; text-align: right; font-size: 20px; font-weight: 800; color: #10b981;">Nu. ${order.totalPrice.toLocaleString()}</td>
+                            <td style="padding-top: 20px; font-weight: 700; color: #ffffff;">${order.totalPrice > 0 ? 'Total Amount' : 'Payment Mode'}</td>
+                            <td style="padding-top: 20px; text-align: right; font-size: 20px; font-weight: 800; color: #10b981;">
+                                ${order.totalPrice > 0 ? `Nu. ${order.totalPrice.toLocaleString()}` : 'PICKUP PAYMENT'}
+                            </td>
                         </tr>
-                        ${order.amountPaid > 0 ? `
+                        ${order.amountPaid > 0 && order.totalPrice > 0 ? `
                         <tr>
                             <td style="padding-top: 10px; font-size: 13px; color: #a1a1aa;">Amount Paid</td>
                             <td style="padding-top: 10px; text-align: right; font-size: 13px; color: #10b981;">Nu. ${order.amountPaid.toLocaleString()}</td>

@@ -264,9 +264,15 @@ export default function CheckoutPage() {
                         </div>
                         <div className="flex-1 min-w-0">
                            <p className="font-bold text-xs truncate leading-tight">{item.product.name}</p>
-                           <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest">{item.quantity} × Nu. {item.product.price ?? 0}</p>
+                           {item.product.price && item.product.price > 0 ? (
+                             <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest">{item.quantity} × Nu. {item.product.price}</p>
+                           ) : (
+                             <p className="text-[9px] font-bold text-agro-green uppercase tracking-widest">{item.quantity} × BAGS</p>
+                           )}
                         </div>
-                        <p className="font-bold text-xs">Nu. {(item.quantity * (item.product.price ?? 0)).toLocaleString()}</p>
+                        {item.product.price && item.product.price > 0 ? (
+                          <p className="font-bold text-xs">Nu. {(item.quantity * item.product.price).toLocaleString()}</p>
+                        ) : null}
                       </div>
                     ))}
                   </div>
@@ -284,7 +290,9 @@ export default function CheckoutPage() {
                      <div className="flex justify-between items-end pt-1">
                         <div>
                           <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest block mb-0.5">Total Payable</span>
-                          <span className="text-3xl font-display font-bold text-zinc-900 dark:text-white leading-none">Nu. {totalPrice.toLocaleString()}</span>
+                          <span className="text-3xl font-display font-bold text-zinc-900 dark:text-white leading-none">
+                            {totalPrice > 0 ? `Nu. ${totalPrice.toLocaleString()}` : 'PAY ON PICKUP'}
+                          </span>
                         </div>
                         <Sparkles className="h-4 w-4 text-agro-orange opacity-40" />
                      </div>

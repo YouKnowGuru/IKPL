@@ -134,8 +134,9 @@ export async function POST(request: NextRequest) {
         }
 
         deducted.push({ productId: item.productId, locationId, quantity: item.quantity });
-        orderItems.push({ productId: product._id, quantity: item.quantity, price: product.price });
-        totalPrice += product.price * item.quantity;
+        const itemPrice = product.price || 0;
+        orderItems.push({ productId: product._id, quantity: item.quantity, price: itemPrice });
+        totalPrice += itemPrice * item.quantity;
       }
     } catch (err: any) {
       // Rollback all previously deducted stock before returning the error

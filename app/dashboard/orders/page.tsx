@@ -89,9 +89,9 @@ export default function DashboardOrdersPage() {
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="text-right">
-                      <p className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-1">Amount</p>
+                      <p className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-1">Status</p>
                       <p className="text-xl font-display font-black text-zinc-900 dark:text-white">
-                        Nu. {order.totalPrice.toLocaleString()}
+                        {order.totalPrice > 0 ? `Nu. ${order.totalPrice.toLocaleString()}` : 'PICKUP'}
                       </p>
                     </div>
                     <Button
@@ -142,14 +142,20 @@ export default function DashboardOrdersPage() {
                           <p className="font-bold text-sm text-zinc-900 dark:text-white">
                             {(item.product?.name || item.productId?.name) || 'Unknown Product'}
                           </p>
-                          <p className="text-xs text-zinc-500 font-medium mt-1">
-                            Unit: Nu. {item.price?.toLocaleString() || '0'}
-                          </p>
+                          {item.price && item.price > 0 ? (
+                            <p className="text-xs text-zinc-500 font-medium mt-1">
+                              Unit: Nu. {item.price.toLocaleString()}
+                            </p>
+                          ) : (
+                            <p className="text-[10px] text-agro-green font-bold uppercase tracking-widest mt-1">Pay at Pickup</p>
+                          )}
                         </div>
                       </div>
-                      <p className="font-display font-bold text-base text-zinc-900 dark:text-white">
-                        Nu. {(item.quantity * (item.price || 0)).toLocaleString()}
-                      </p>
+                      {item.price && item.price > 0 ? (
+                        <p className="font-display font-bold text-base text-zinc-900 dark:text-white">
+                          Nu. {(item.quantity * item.price).toLocaleString()}
+                        </p>
+                      ) : null}
                     </div>
                   ))}
                 </div>
@@ -178,8 +184,10 @@ export default function DashboardOrdersPage() {
               <div className="border-t border-zinc-200 dark:border-white/10 pt-6">
                 <div className="flex justify-between items-center px-4 py-3 rounded-2xl bg-zinc-900 dark:bg-white/5 text-white shadow-lg overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-agro-green/20 to-transparent pointer-events-none" />
-                  <span className="font-bold tracking-wide relative z-10">Grand Total</span>
-                  <span className="text-2xl font-display font-black text-agro-green relative z-10">Nu. {selectedOrder.totalPrice.toLocaleString()}</span>
+                  <span className="font-bold tracking-wide relative z-10">{selectedOrder.totalPrice > 0 ? 'Grand Total' : 'Payment Status'}</span>
+                  <span className="text-2xl font-display font-black text-agro-green relative z-10">
+                    {selectedOrder.totalPrice > 0 ? `Nu. ${selectedOrder.totalPrice.toLocaleString()}` : 'PAY ON PICKUP'}
+                  </span>
                 </div>
               </div>
             </div>

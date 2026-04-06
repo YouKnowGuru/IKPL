@@ -52,7 +52,7 @@ export default async function DashboardPage() {
             </div>
           </div>
           <p className="text-3xl font-black font-display text-zinc-900 dark:text-white">
-            Nu. {totalSpent.toLocaleString()}
+            {totalSpent > 0 ? `Nu. ${totalSpent.toLocaleString()}` : 'Order History'}
           </p>
           <div className="h-1 w-full bg-zinc-100 dark:bg-white/5 rounded-full mt-4 overflow-hidden">
             <div className="h-full bg-agro-green w-3/4 rounded-full" />
@@ -130,9 +130,13 @@ export default async function DashboardPage() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-bold text-zinc-900 dark:text-white">
-                      Nu. {order.totalPrice.toLocaleString()}
-                    </p>
+                    {order.totalPrice > 0 ? (
+                      <p className="text-sm font-bold text-zinc-900 dark:text-white">
+                        Nu. {order.totalPrice.toLocaleString()}
+                      </p>
+                    ) : (
+                      <p className="text-[10px] font-bold text-agro-green uppercase">Pickup</p>
+                    )}
                     <span className="text-[10px] font-bold uppercase tracking-wider text-agro-orange">
                       {order.status}
                     </span>

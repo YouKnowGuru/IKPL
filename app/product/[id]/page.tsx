@@ -186,7 +186,9 @@ export default function ProductDetailPage() {
           </div>
           <div>
             <h3 className="font-bold text-sm truncate max-w-[150px] sm:max-w-[300px]">{product.name}</h3>
-            <p className="text-agro-green font-bold text-xs">{product.price != null ? `Nu. ${product.price.toFixed(2)}` : 'Contact for Price'}</p>
+            {product.price && product.price > 0 ? (
+              <p className="text-agro-green font-bold text-xs">Nu. {product.price.toFixed(2)}</p>
+            ) : null}
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -315,12 +317,16 @@ export default function ProductDetailPage() {
                 <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Brand: IKPL Premium</span>
               </div>
 
-              <div className="flex items-end gap-2 mb-8">
-                <span className="text-3xl sm:text-4xl font-display font-bold text-agro-green leading-none">
-                  {product.price != null ? `Nu. ${product.price.toLocaleString()}` : 'Contact for Price'}
-                </span>
-                {product.price != null && <span className="text-sm text-zinc-400 font-medium mb-1 opacity-60">/ Bag</span>}
-              </div>
+              {product.price && product.price > 0 ? (
+                <div className="flex items-end gap-2 mb-8">
+                  <span className="text-3xl sm:text-4xl font-display font-bold text-agro-green leading-none">
+                    Nu. {product.price.toLocaleString()}
+                  </span>
+                  <span className="text-sm text-zinc-400 font-medium mb-1 opacity-60">/ Bag</span>
+                </div>
+              ) : (
+                <div className="mb-8" />
+              )}
 
               <div 
                 className="prose prose-zinc dark:prose-invert max-w-none text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8 text-base"
@@ -358,8 +364,12 @@ export default function ProductDetailPage() {
                       </div>
                     </div>
                     <div className="text-left sm:text-right mt-2 sm:mt-0 border-t border-white/10 sm:border-0 pt-4 sm:pt-0">
-                      <p className="text-zinc-500 text-[9px] font-bold uppercase tracking-widest mb-0.5">Estimated Total</p>
-                      <p className="text-2xl font-display font-bold text-white">{product.price != null ? `Nu. ${(product.price * quantity).toLocaleString()}` : 'N/A'}</p>
+                      {product.price && product.price > 0 ? (
+                        <>
+                          <p className="text-zinc-500 text-[9px] font-bold uppercase tracking-widest mb-0.5">Estimated Total</p>
+                          <p className="text-2xl font-display font-bold text-white">Nu. {(product.price * quantity).toLocaleString()}</p>
+                        </>
+                      ) : null}
                     </div>
                   </div>
                   

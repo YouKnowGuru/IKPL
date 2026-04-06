@@ -39,8 +39,8 @@ const OrderSchema = new mongoose.Schema<IOrder>(
         },
         price: {
           type: Number,
-          required: true,
           min: [0, 'Price cannot be negative'],
+          default: 0,
         },
       },
     ],
@@ -56,8 +56,8 @@ const OrderSchema = new mongoose.Schema<IOrder>(
     },
     totalPrice: {
       type: Number,
-      required: true,
       min: [0, 'Total price cannot be negative'],
+      default: 0,
     },
     notes: {
       type: String,

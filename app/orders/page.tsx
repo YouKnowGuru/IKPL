@@ -88,9 +88,9 @@ export default function OrdersPage() {
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="text-right">
-                      <p className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-1">Amount</p>
+                      <p className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-1">Status</p>
                       <p className="text-xl font-display font-bold text-agro-green">
-                        Nu. {order.totalPrice.toFixed(2)}
+                        {order.totalPrice > 0 ? `Nu. ${order.totalPrice.toFixed(2)}` : 'PICKUP'}
                       </p>
                     </div>
                     <Button
@@ -139,12 +139,18 @@ export default function OrdersPage() {
                         </div>
                         <div>
                           <p className="font-bold text-sm">{(item.productId || item.product)?.name}</p>
-                          <p className="text-[10px] text-zinc-400 font-medium">Unit Price: Nu. {item.price.toFixed(2)}</p>
+                          {item.price > 0 ? (
+                            <p className="text-[10px] text-zinc-400 font-medium">Unit Price: Nu. {item.price.toFixed(2)}</p>
+                          ) : (
+                            <p className="text-[10px] text-agro-green font-bold uppercase tracking-widest">Pay at Pickup</p>
+                          )}
                         </div>
                       </div>
-                      <p className="font-display font-bold text-sm text-agro-green">
-                        Nu. {(item.quantity * item.price).toFixed(2)}
-                      </p>
+                      {item.price > 0 ? (
+                        <p className="font-display font-bold text-sm text-agro-green">
+                          Nu. {(item.quantity * item.price).toFixed(2)}
+                        </p>
+                      ) : null}
                     </div>
                   ))}
                 </div>
@@ -171,8 +177,10 @@ export default function OrdersPage() {
 
               <div className="border-t pt-4">
                 <div className="flex justify-between items-center bg-agro-green/5 p-4 rounded-xl">
-                  <span className="font-bold">Total Amount Paid</span>
-                  <span className="text-2xl font-display font-bold text-agro-green">Nu. {selectedOrder.totalPrice.toFixed(2)}</span>
+                  <span className="font-bold">{selectedOrder.totalPrice > 0 ? 'Total Amount' : 'Payment Status'}</span>
+                  <span className="text-2xl font-display font-bold text-agro-green">
+                    {selectedOrder.totalPrice > 0 ? `Nu. ${selectedOrder.totalPrice.toFixed(2)}` : 'PAY AT PICKUP'}
+                  </span>
                 </div>
               </div>
             </div>

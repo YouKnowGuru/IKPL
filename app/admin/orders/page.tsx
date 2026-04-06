@@ -138,7 +138,11 @@ export default function AdminOrders() {
                       </span>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <p className="font-display font-bold">Nu. {o.totalPrice?.toLocaleString()}</p>
+                      {o.totalPrice > 0 ? (
+                        <p className="font-display font-bold">Nu. {o.totalPrice.toLocaleString()}</p>
+                      ) : (
+                        <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-tighter">Pickup Pay</p>
+                      )}
                       {o.paymentStatus === 'credit' && (
                         <p className="text-[10px] text-red-500 font-bold uppercase tracking-tighter">Credit</p>
                       )}
@@ -147,7 +151,7 @@ export default function AdminOrders() {
                       )}
                       {o.paymentStatus === 'partial' && (
                         <p className="text-[10px] text-amber-500 font-bold uppercase tracking-tighter">
-                          Advance: Nu. {o.amountPaid?.toLocaleString()}
+                          Advance: {o.amountPaid > 0 ? `Nu. ${o.amountPaid.toLocaleString()}` : '0'}
                         </p>
                       )}
                     </td>
@@ -194,11 +198,11 @@ export default function AdminOrders() {
                   <p className="font-bold text-sm">{selectedOrder.userId?.name || 'Unknown'}</p>
                   <p className="text-xs text-zinc-500 truncate">{selectedOrder.userId?.email}</p>
                 </div>
-                <div className="bg-zinc-50 dark:bg-zinc-900 p-4 rounded-xl border border-zinc-100 dark:border-white/5">
-                  <p className="text-[10px] text-zinc-500 font-bold uppercase mb-1 tracking-widest">Total Bill</p>
-                  <p className="font-bold text-sm text-agro-green">
-                    Nu. {selectedOrder.totalPrice?.toLocaleString()}
-                  </p>
+                  <div className="bg-zinc-50 dark:bg-zinc-900 p-4 rounded-xl border border-zinc-100 dark:border-white/5">
+                    <p className="text-[10px] text-zinc-500 font-bold uppercase mb-1 tracking-widest">Total Bill</p>
+                    <p className="font-bold text-sm text-agro-green">
+                      {selectedOrder.totalPrice > 0 ? `Nu. ${selectedOrder.totalPrice.toLocaleString()}` : 'PICKUP PAYMENT'}
+                    </p>
                   <Badge variant="outline" className="text-[9px] h-4 px-1 mt-1">
                     {(selectedOrder.paymentStatus || 'unpaid').toUpperCase()}
                   </Badge>
@@ -217,7 +221,9 @@ export default function AdminOrders() {
                       <span className="text-zinc-700 dark:text-zinc-300">
                         {i.quantity} × {i.productId?.name || 'Unknown Product'}
                       </span>
-                      <span className="font-bold">Nu. {(i.price * i.quantity).toLocaleString()}</span>
+                      {i.price > 0 ? (
+                        <span className="font-bold">Nu. {(i.price * i.quantity).toLocaleString()}</span>
+                      ) : null}
                     </div>
                   ))}
                 </div>
@@ -274,7 +280,7 @@ export default function AdminOrders() {
                     </label>
                     {paymentStatus === 'paid' ? (
                       <div className="flex h-10 w-full items-center rounded-xl border border-agro-green/40 bg-agro-green/5 px-3 text-sm font-bold text-agro-green">
-                        Nu. {selectedOrder.totalPrice?.toLocaleString()} (Full)
+                        {selectedOrder.totalPrice > 0 ? `Nu. ${selectedOrder.totalPrice.toLocaleString()} (Full)` : 'PAID (Pickup Val)'}
                       </div>
                     ) : (
                       <input

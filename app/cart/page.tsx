@@ -61,8 +61,12 @@ export default function CartPage() {
         </div>
         <div className="flex items-center gap-3 text-xs font-bold text-zinc-400">
            <span className="text-zinc-900 dark:text-white">{items.length} Items</span>
-           <div className="h-1 w-1 bg-zinc-300 rounded-full" />
-           <span>Estimated Total: Nu. {totalPrice.toLocaleString()}</span>
+           {totalPrice > 0 && (
+             <>
+               <div className="h-1 w-1 bg-zinc-300 rounded-full" />
+               <span>Estimated Total: Nu. {totalPrice.toLocaleString()}</span>
+             </>
+           )}
         </div>
       </div>
 
@@ -100,7 +104,9 @@ export default function CartPage() {
                       {item.product.name}
                     </h3>
                   </Link>
-                  <p className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-2 sm:mb-3">Nu. {(item.product.price ?? 0).toLocaleString()}</p>
+                  {item.product.price && item.product.price > 0 ? (
+                    <p className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-2 sm:mb-3">Nu. {item.product.price.toLocaleString()}</p>
+                  ) : null}
                   
                   <div className="flex items-center justify-center sm:justify-start gap-3">
                     <div className="flex items-center bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/10 rounded-xl h-10 w-fit px-1.5">
@@ -135,8 +141,12 @@ export default function CartPage() {
                 </div>
 
                 <div className="text-right hidden sm:block">
-                   <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-0.5">Row Total</p>
-                   <p className="text-xl font-display font-bold text-agro-green">Nu. {((item.product.price ?? 0) * item.quantity).toLocaleString()}</p>
+                   {item.product.price && item.product.price > 0 ? (
+                     <>
+                       <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-0.5">Row Total</p>
+                       <p className="text-xl font-display font-bold text-agro-green">Nu. {(item.product.price * item.quantity).toLocaleString()}</p>
+                     </>
+                   ) : null}
                 </div>
 
 
@@ -158,10 +168,17 @@ export default function CartPage() {
               <h2 className="text-xl font-display font-bold">Checkout <span className="text-agro-green">Summary</span></h2>
               
               <div className="space-y-3">
-                <div className="flex justify-between items-center text-zinc-500">
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Subtotal ({items.length} items)</span>
-                  <span className="font-bold text-sm">Nu. {totalPrice.toLocaleString()}</span>
-                </div>
+                {totalPrice > 0 ? (
+                  <div className="flex justify-between items-center text-zinc-500">
+                    <span className="text-[10px] font-bold uppercase tracking-widest">Subtotal ({items.length} items)</span>
+                    <span className="font-bold text-sm">Nu. {totalPrice.toLocaleString()}</span>
+                  </div>
+                ) : (
+                  <div className="flex justify-between items-center text-zinc-500">
+                    <span className="text-[10px] font-bold uppercase tracking-widest">Items ({items.length})</span>
+                    <span className="font-bold text-xs text-agro-green">PAY AT PICKUP</span>
+                  </div>
+                )}
                 <div className="flex justify-between items-center text-zinc-500">
                    <span className="text-[10px] font-bold uppercase tracking-widest">Processing Fee</span>
                    <span className="font-bold text-xs text-agro-green">FREE</span>
@@ -170,7 +187,9 @@ export default function CartPage() {
                 <div className="flex justify-between items-end">
                    <div>
                      <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest block mb-0.5">Grand Total</span>
-                     <span className="text-3xl font-display font-bold text-zinc-900 dark:text-white leading-none">Nu. {totalPrice.toLocaleString()}</span>
+                     <span className="text-3xl font-display font-bold text-zinc-900 dark:text-white leading-none">
+                       {totalPrice > 0 ? `Nu. ${totalPrice.toLocaleString()}` : 'PICKUP PAYMENT'}
+                     </span>
                    </div>
                    <div className="text-[9px] font-bold text-agro-orange uppercase tracking-tighter mb-1 flex items-center gap-1">
                       <Sparkles className="h-2.5 w-2.5 fill-agro-orange" /> Tax Inc.
