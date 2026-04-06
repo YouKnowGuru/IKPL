@@ -234,7 +234,7 @@ function AdsSlider() {
 
   return (
     <div 
-      className="relative w-full h-[400px] sm:h-[550px] rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden group shadow-2xl border border-zinc-100 dark:border-white/5"
+      className="relative w-full h-[500px] sm:h-[700px] rounded-[3rem] sm:rounded-[4rem] overflow-hidden group shadow-2xl border border-zinc-100 dark:border-white/10"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -259,18 +259,23 @@ function AdsSlider() {
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
-          {/* Layer 2: The 'Pop' Card (9:16) */}
-          <div className="absolute inset-0 flex items-center justify-center lg:justify-end lg:pr-24 lg:pt-12 pointer-events-none">
+          {/* Layer 2: The 'Pop' Card (Responsive 3D Engine) */}
+          <div className="absolute inset-0 flex items-center justify-center lg:justify-end lg:pr-24 pointer-events-none perspective-[1200px]">
             <motion.div 
-              initial={{ scale: 0.8, opacity: 0, rotateY: 15 }}
-              animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-              className="relative w-[240px] h-[426px] sm:w-[320px] sm:h-[568px] group/pop pointer-events-auto"
+              key={currentIndex}
+              initial={{ scale: 0.7, opacity: 0, rotateY: 25, z: -100 }}
+              animate={{ scale: 1, opacity: 1, rotateY: 0, z: 0 }}
+              whileHover={{ rotateY: -12, rotateX: 6, scale: 1.05, translateZ: 50 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
+              className="relative h-[85%] sm:h-[92%] aspect-[9/16] group/pop pointer-events-auto"
             >
+              {/* Back-Glow Effect */}
+              <div className="absolute -inset-10 bg-agro-green/20 blur-[120px] rounded-full -z-10 opacity-30 sm:opacity-50" />
+              
               <motion.div
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="w-full h-full rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden border border-white/20 shadow-[0_40px_100px_rgba(0,0,0,0.7)] premium-shadow-glow transition-all duration-700"
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-full h-full rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(0,0,0,0.8)] backdrop-blur-sm transition-all duration-700"
               >
                 <Image
                   src={images[currentIndex]}
@@ -280,8 +285,6 @@ function AdsSlider() {
                   priority
                 />
               </motion.div>
-              {/* Optional Glass Glow behind the card */}
-              <div className="absolute -inset-10 bg-agro-green/10 blur-[100px] rounded-full -z-10 opacity-0 group-hover/pop:opacity-100 transition-opacity duration-1000" />
             </motion.div>
           </div>
 
