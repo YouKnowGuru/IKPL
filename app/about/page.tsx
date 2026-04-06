@@ -175,7 +175,7 @@ export default function AboutPage() {
                     <Eye className="h-4 w-4" />
                     Our Vision
                   </div>
-                  <h3 className="text-2xl sm:text-4xl font-display font-bold mb-4 sm:mb-6 text-zinc-900 dark:text-white">To become Bhutan’s most <span className="gradient-text">trusted</span> distribution partner.</h3>
+                  <h3 className="text-2xl sm:text-4xl font-display font-bold mb-4 sm:mb-6 text-zinc-900 dark:text-white">To become Bhutan’s most <span className="gradient-text">trusted</span> marketing and distribution partner.</h3>
                   <p className="text-base sm:text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6 sm:mb-8 italic border-l-4 border-agro-orange/30 pl-4 sm:pl-6">
                     "Recognized for delivering high-quality products, empowering local communities, and contributing to sustainable economic growth."
                   </p>

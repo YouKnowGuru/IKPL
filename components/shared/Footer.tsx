@@ -187,7 +187,7 @@ export default function Footer() {
 
 
             <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">
-              Revolutionizing animal nutrition with premium, scientifically-formulated feeds. Trusted by 20,000+ farmers across Bhutan for over two decades.
+              UDOR Feeds | Rumpum | Sizmic marketing partner. Revolutionizing animal nutrition and consumer distribution across Bhutan for over two decades.
             </p>
 
             {/* Contact info — pulled dynamically from Settings */}

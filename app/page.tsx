@@ -523,8 +523,8 @@ export default function HomePage() {
               </motion.div>
 
               <motion.h1 variants={fadeUp} className="font-display font-extrabold text-white text-2xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] sm:leading-[1.05] tracking-tight">
-                Bhutan’s Trusted <br className="hidden sm:block" />
-                <span className="bg-gradient-to-r from-agro-orange via-amber-400 to-agro-green bg-clip-text text-transparent">Agriculture Partner</span>
+                UDOR Feeds | Rumpum | <br className="hidden sm:block" />
+                <span className="bg-gradient-to-r from-agro-orange via-amber-400 to-agro-green bg-clip-text text-transparent">Sizmic marketing partner</span>
               </motion.h1>
 
 
