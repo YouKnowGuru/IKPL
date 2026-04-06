@@ -112,13 +112,6 @@ export default function Navbar() {
               )}>
                 IKPL
               </span>
-
-              <span className={cn(
-                'text-[9px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300',
-                !isNavbarTransparent ? 'text-agro-green' : 'text-white/60'
-              )}>
-                Premium Feeds
-              </span>
             </div>
           </Link>
 
