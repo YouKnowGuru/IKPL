@@ -15,7 +15,7 @@ import {
   Star, CheckCircle, Zap, Globe, Users, TrendingUp, FlaskConical,
   HeartHandshake, ArrowUpRight, Sparkles, ShoppingCart, LogIn,
   UserPlus, Play, BadgeCheck, Wheat, Fish, Beef, Egg, MapPin, LineChart, Package,
-  Handshake
+  Handshake, ChevronLeft, ChevronRight
 } from 'lucide-react';
 
 
@@ -211,6 +211,120 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         </div>
       </div>
     </Link>
+  );
+}
+function AdsSlider() {
+  const images = [
+    '/img/img1.jpg', '/img/img3.jpg', '/img/img5.jpg', '/img/img7.jpg', '/img/img9.jpg',
+    '/img/img11.jpg', '/img/img13.jpg', '/img/img15.jpg', '/img/img17.jpg', '/img/img19.jpg',
+    '/img/img21.jpg', '/img/img23.jpg', '/img/img25.jpg', '/img/img27.jpg', '/img/img29.jpg',
+    '/img/banner2.jpg', '/img/Use AI Image Apr 6, 2026, 15_55_26.png'
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isHovered, images.length]);
+
+  return (
+    <div 
+      className="relative w-full h-[400px] sm:h-[550px] rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden group shadow-2xl border border-zinc-100 dark:border-white/5"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={images[currentIndex]}
+            alt={`Advertisement Slide ${currentIndex + 1}`}
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Main Overlay Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Floating Modern Information Card */}
+      <div className="absolute inset-0 flex items-end p-8 sm:p-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          key={currentIndex}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="max-w-xl glass-dark rounded-[2rem] p-8 border border-white/10 shadow-2xl backdrop-blur-xl"
+        >
+          <div className="inline-flex items-center gap-2 bg-agro-green/20 text-agro-green text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest mb-4">
+             <Star className="h-3.5 w-3.5 fill-agro-green" />
+             Seasonal Promotions
+          </div>
+          <h3 className="text-2xl sm:text-4xl font-display font-bold text-white mb-4 leading-tight">
+            Superior Quality <br />
+            <span className="gradient-text">Agricultural Feeds</span>
+          </h3>
+          <p className="text-zinc-400 text-sm sm:text-base mb-8 line-clamp-2 sm:line-clamp-none">
+            Empowering Bhutan's farmers with nutritionally optimized distribution of broiler, cattle, and specialized livestock feeds.
+          </p>
+          <div className="flex items-center gap-4">
+             <Link href="/products">
+                <Button className="btn-glow-green text-white font-bold h-12 px-8 rounded-xl shadow-lg border-0">
+                  Shop Now
+                </Button>
+             </Link>
+             <button className="hidden sm:flex h-12 w-12 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-white border border-white/10 transition-all">
+                <Play className="h-5 w-5 ml-0.5 fill-white" />
+             </button>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Slider Controls */}
+      <div className="absolute bottom-10 right-10 flex items-center gap-4 z-20">
+         <div className="flex gap-2 mr-4">
+            {images.map((_, idx) => (
+               <button
+                 key={idx}
+                 onClick={() => setCurrentIndex(idx)}
+                 className={`h-1.5 rounded-full transition-all duration-300 ${
+                   currentIndex === idx ? 'w-8 bg-agro-green' : 'w-2 bg-white/30 hover:bg-white/50'
+                 }`}
+               />
+            ))}
+         </div>
+         <div className="flex gap-2">
+            <Button 
+               size="icon" 
+               variant="outline" 
+               onClick={() => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)}
+               className="h-10 w-10 rounded-xl bg-white/10 backdrop-blur-md border-white/10 text-white hover:bg-white/20 hover:scale-105 transition-all"
+            >
+               <ChevronLeft className="h-5 w-5" />
+            </Button>
+            <Button 
+               size="icon" 
+               variant="outline" 
+               onClick={() => setCurrentIndex((prev) => (prev + 1) % images.length)}
+               className="h-10 w-10 rounded-xl bg-white/10 backdrop-blur-md border-white/10 text-white hover:bg-white/20 hover:scale-105 transition-all"
+            >
+               <ChevronRight className="h-5 w-5" />
+            </Button>
+         </div>
+      </div>
+    </div>
   );
 }
 
@@ -627,6 +741,16 @@ export default function HomePage() {
 
           )}
         </div>
+      </section>
+      
+      {/* ── MODERN ADS SLIDER ─────────────────────────────────────────── */}
+      <section className="py-20 bg-zinc-50 dark:bg-zinc-950 overflow-hidden relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+           <AdsSlider />
+        </div>
+        {/* Visual mesh elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-agro-green/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-agro-orange/5 rounded-full blur-[100px] pointer-events-none" />
       </section>
 
       {/* ── STRATEGIC PARTNERS ────────────────────────────────────────── */}
