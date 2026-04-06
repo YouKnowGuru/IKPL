@@ -241,21 +241,43 @@ function AdsSlider() {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          className="absolute inset-0 bg-zinc-950"
         >
-          <Image
-            src={images[currentIndex]}
-            alt={`Advertisement Slide ${currentIndex + 1}`}
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Main Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          {/* Layer 1: Blurred Background Fill */}
+          <div className="absolute inset-0 scale-110 blur-3xl opacity-30">
+            <Image
+              src={images[currentIndex]}
+              alt="Background Blur"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Layer 2: Sharp Full-Size Foreground Image */}
+          <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-12">
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src={images[currentIndex]}
+                alt={`Premium Ads Slide ${currentIndex + 1}`}
+                fill
+                className="object-contain drop-shadow-2xl"
+                priority
+              />
+            </motion.div>
+          </div>
+
+          {/* Premium Overlays */}
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none" />
         </motion.div>
       </AnimatePresence>
 
@@ -272,12 +294,32 @@ function AdsSlider() {
              <Star className="h-3.5 w-3.5 fill-agro-green" />
              Seasonal Promotions
           </div>
-          <h3 className="text-2xl sm:text-4xl font-display font-bold text-white mb-4 leading-tight">
+          <h3 className="text-3xl sm:text-5xl font-display font-bold text-white mb-4 leading-tight">
             Superior Quality <br />
             <span className="gradient-text">Agricultural Feeds</span>
           </h3>
-          <p className="text-zinc-400 text-sm sm:text-base mb-8 line-clamp-2 sm:line-clamp-none">
-            Empowering Bhutan's farmers with nutritionally optimized distribution of broiler, cattle, and specialized livestock feeds.
+
+          {/* Dynamic Moving Highlight Bar */}
+          <div className="relative w-full overflow-hidden h-7 mb-6 border-y border-white/10 flex items-center group/marquee">
+            <motion.div 
+              className="flex whitespace-nowrap gap-12 text-agro-green font-bold text-[10px] uppercase tracking-[0.25em]"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            >
+              {[...Array(2)].map((_, i) => (
+                <span key={i} className="flex gap-12">
+                  <span>Cattle Feeds</span> <span>•</span>
+                  <span>Poultry Feeds</span> <span>•</span>
+                  <span>Hor Spicy Noodles</span> <span>•</span>
+                  <span>Premium Chocolate</span> <span>•</span>
+                  <span>Specialized Nutrition</span> <span>•</span>
+                </span>
+              ))}
+            </motion.div>
+          </div>
+
+          <p className="text-zinc-300 text-sm sm:text-base mb-8 font-medium leading-relaxed">
+            Empowering Bhutan's farmers with nutritionally optimized distribution of broiler, cattle, specialized livestock feeds, spicy noodles, and premium chocolates.
           </p>
           <div className="flex items-center gap-4">
              <Link href="/products">
