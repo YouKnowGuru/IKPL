@@ -225,11 +225,12 @@ function AdsSlider() {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    if (isHovered) return;
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+    const timer = setInterval(() => {
+      if (!isHovered) {
+        setCurrentIndex((prev) => (prev + 1) % images.length);
+      }
     }, 5000);
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, [isHovered, images.length]);
 
   return (
@@ -267,21 +268,21 @@ function AdsSlider() {
               animate={{ scale: 1, opacity: 1, rotateY: 0, z: 0 }}
               whileHover={{ rotateY: -12, rotateX: 6, scale: 1.05, translateZ: 50 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
-              className="relative h-[85%] sm:h-[92%] aspect-[9/16] group/pop pointer-events-auto"
+              className="relative h-full aspect-[9/16] group/pop pointer-events-auto"
             >
               {/* Back-Glow Effect */}
               <div className="absolute -inset-10 bg-agro-green/20 blur-[120px] rounded-full -z-10 opacity-30 sm:opacity-50" />
               
               <motion.div
-                animate={{ y: [0, -20, 0] }}
+                animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="w-full h-full rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(0,0,0,0.8)] backdrop-blur-sm transition-all duration-700"
+                className="w-full h-full rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(0,0,0,0.8)] transition-all duration-700"
               >
                 <Image
                   src={images[currentIndex]}
                   alt="Premium Product Pop"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   priority
                 />
               </motion.div>
@@ -307,8 +308,8 @@ function AdsSlider() {
              Premium Distribution
           </div>
           <h3 className="text-3xl sm:text-5xl font-display font-bold text-white mb-4 leading-tight">
-            Superior Quality <br />
-            <span className="gradient-text">Agricultural Feeds</span>
+            Trusted <br />
+            <span className="gradient-text">High Quality Goods</span>
           </h3>
 
           {/* Dynamic Moving Highlight Bar */}
