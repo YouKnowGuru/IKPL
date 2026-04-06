@@ -651,43 +651,61 @@ export default function HomePage() {
           <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-64 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent z-10 pointer-events-none" />
 
           <motion.div 
-            className="flex items-center gap-8 sm:gap-12 py-8 whitespace-nowrap"
+            className="flex items-center gap-6 sm:gap-10 py-10 whitespace-nowrap"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ 
-              duration: 30,
+              duration: 40,
               repeat: Infinity, 
               ease: "linear" 
             }}
           >
             {/* Duplicate the items to create a seamless loop */}
-            {((partners.length > 0 ? partners : [...Array(8)].map((_, i) => ({ 
-               name: `Partner ${i+1}`, 
-               photo: null, 
-               isPlaceholder: true 
-            }))).concat(partners.length > 0 ? partners : [...Array(8)].map((_, i) => ({ 
-               name: `Partner ${i+1}`, 
-               photo: null, 
-               isPlaceholder: true 
-            })))).map((p, i) => (
+            {(() => {
+              const baseList = partners.length > 0 ? partners : [...Array(8)].map((_, i) => ({ 
+                name: `Partner Ecosystem ${i+1}`, 
+                title: 'Strategic Ally',
+                description: 'Providing world-class supply chain solutions and logistics support nationwide.',
+                photo: null, 
+                isPlaceholder: true 
+              }));
+              return [...baseList, ...baseList];
+            })().map((p, i) => (
               <div 
                 key={i} 
-                className="flex-shrink-0 w-40 h-40 sm:w-56 sm:h-56 rounded-[2.5rem] sm:rounded-[3.5rem] bg-zinc-50 dark:bg-zinc-950 border border-zinc-100 dark:border-white/5 flex items-center justify-center p-8 sm:p-12 shadow-sm hover:shadow-2xl hover:border-agro-green/40 transition-all duration-500 group/logo"
+                className="flex-shrink-0 w-64 sm:w-80 h-auto rounded-[2.5rem] sm:rounded-[3rem] bg-white dark:bg-zinc-950 border border-zinc-100 dark:border-white/10 p-6 sm:p-8 shadow-sm hover:shadow-2xl hover:border-agro-green/40 transition-all duration-500 group/logo flex flex-col items-center text-center"
               >
-                {p.photo ? (
-                  <div className="relative w-full h-full">
-                    <Image 
-                      src={p.photo} 
-                      alt={p.name} 
-                      fill 
-                      className="object-contain filter grayscale group-hover/logo:grayscale-0 transition-all duration-500" 
-                    />
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center gap-3 text-zinc-300 dark:text-zinc-800 group-hover/logo:text-agro-green transition-all duration-500">
-                    <div className="w-12 h-12 rounded-2xl bg-current opacity-20" />
-                    <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest opacity-40">{p.name || 'Brand Ecosystem'}</span>
-                  </div>
-                )}
+                {/* Logo Container */}
+                <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-white/5 flex items-center justify-center p-4 sm:p-6 mb-6 shadow-inner-sm overflow-hidden group-hover/logo:scale-110 transition-transform duration-500">
+                  {p.photo ? (
+                    <div className="relative w-full h-full">
+                      <Image 
+                        src={p.photo} 
+                        alt={p.name} 
+                        fill 
+                        className="object-contain filter grayscale group-hover/logo:grayscale-0 transition-all duration-500" 
+                      />
+                    </div>
+                  ) : (
+                    <Handshake className="h-10 w-10 text-agro-green opacity-20 group-hover/logo:opacity-100 transition-opacity" />
+                  )}
+                </div>
+
+                {/* Text Content */}
+                <div className="flex flex-col items-center gap-1.5 w-full">
+                  <h3 className="text-base sm:text-lg font-display font-bold text-zinc-900 dark:text-white truncate w-full">
+                    {p.name}
+                  </h3>
+                  {p.title && (
+                    <p className="text-[10px] sm:text-xs font-bold text-agro-green uppercase tracking-[0.15em] mb-2 opacity-80">
+                      {p.title}
+                    </p>
+                  )}
+                  {p.description && (
+                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed whitespace-normal max-w-[240px]">
+                      {p.description}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </motion.div>
