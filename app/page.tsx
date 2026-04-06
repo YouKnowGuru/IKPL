@@ -630,38 +630,75 @@ export default function HomePage() {
       </section>
 
       {/* ── STRATEGIC PARTNERS ────────────────────────────────────────── */}
-      <section className="py-12 sm:py-24 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-              <div className="lg:w-1/3">
-                 <div className="inline-flex items-center gap-2 bg-agro-orange/10 text-agro-orange text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-6">
-                    <Handshake className="h-4 w-4" />
-                    Our Partners
-                 </div>
-                 <h2 className="text-2xl sm:text-4xl font-display font-bold leading-tight mb-4">Strategic <br className="hidden sm:block" /><span className="gradient-text">Wholesale Network</span></h2>
-                 <p className="text-zinc-500 dark:text-zinc-400 text-sm sm:text-lg">We bridge the gap between world-class manufacturing and local farmers through elite brand partnerships.</p>
+      <section className="py-20 sm:py-32 bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-white/5 overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+           <div className="text-center max-w-3xl mx-auto">
+              <div className="inline-flex items-center gap-2 bg-agro-orange/10 text-agro-orange text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-6">
+                 <Handshake className="h-4 w-4" />
+                 Our Ecosystem
               </div>
-              <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
-                 {[
-                   { name: 'Noodles', label: 'Quality Food Products', desc: 'Premium food range catering to households across the kingdom.', href: null },
-                   { name: 'UDOR Feeds', label: 'Animal Nutrition', desc: 'Expertly formulated livestock feeds for farmers and cooperatives.', href: '/udoor' }
-                 ].map((p, i) => (
-                   <div key={i} className="group p-5 sm:p-8 rounded-2xl sm:rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-950 border border-zinc-100 dark:border-white/5 card-hover shadow-sm flex flex-col">
-                      <div className="text-agro-green font-black text-2xl mb-2 group-hover:scale-105 transition-transform">{p.name}</div>
-                      <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-4">{p.label}</div>
-                      <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8 flex-1">{p.desc}</p>
-                      {p.href && (
-                        <Link href={p.href}>
-                          <Button variant="outline" className="rounded-xl border-zinc-200 dark:border-white/10 h-11 text-xs font-bold w-full group/btn">
-                            View Brand Profile
-                            <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover/btn:translate-x-1 transition-transform" />
-                          </Button>
-                        </Link>
-                      )}
-                   </div>
-                 ))}
-              </div>
+              <h2 className="text-3xl sm:text-5xl font-display font-bold leading-tight mb-6">Strategic <span className="gradient-text">Partnerships</span></h2>
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm sm:text-xl leading-relaxed">
+                We bridge the gap between world-class manufacturing and local farmers through elite brand partnerships and a nationwide logistics network.
+              </p>
            </div>
+        </div>
+
+        {/* LOGO MARQUEE */}
+        <div className="relative flex overflow-hidden">
+          {/* Fades for smooth edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 sm:w-64 bg-gradient-to-r from-white dark:from-zinc-900 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 sm:w-64 bg-gradient-to-l from-white dark:from-zinc-900 to-transparent z-10 pointer-events-none" />
+
+          <motion.div 
+            className="flex items-center gap-8 sm:gap-12 py-8 whitespace-nowrap"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ 
+              duration: 30,
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
+          >
+            {/* Duplicate the items to create a seamless loop */}
+            {((partners.length > 0 ? partners : [...Array(8)].map((_, i) => ({ 
+               name: `Partner ${i+1}`, 
+               photo: null, 
+               isPlaceholder: true 
+            }))).concat(partners.length > 0 ? partners : [...Array(8)].map((_, i) => ({ 
+               name: `Partner ${i+1}`, 
+               photo: null, 
+               isPlaceholder: true 
+            })))).map((p, i) => (
+              <div 
+                key={i} 
+                className="flex-shrink-0 w-40 h-40 sm:w-56 sm:h-56 rounded-[2.5rem] sm:rounded-[3.5rem] bg-zinc-50 dark:bg-zinc-950 border border-zinc-100 dark:border-white/5 flex items-center justify-center p-8 sm:p-12 shadow-sm hover:shadow-2xl hover:border-agro-green/40 transition-all duration-500 group/logo"
+              >
+                {p.photo ? (
+                  <div className="relative w-full h-full">
+                    <Image 
+                      src={p.photo} 
+                      alt={p.name} 
+                      fill 
+                      className="object-contain filter grayscale group-hover/logo:grayscale-0 transition-all duration-500" 
+                    />
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center gap-3 text-zinc-300 dark:text-zinc-800 group-hover/logo:text-agro-green transition-all duration-500">
+                    <div className="w-12 h-12 rounded-2xl bg-current opacity-20" />
+                    <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest opacity-40">{p.name || 'Brand Ecosystem'}</span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="container mx-auto px-4 mt-16 flex justify-center">
+           <Link href="/contact">
+             <Button variant="outline" className="rounded-full border-zinc-200 dark:border-white/10 h-12 px-8 font-bold text-sm group hover:border-agro-green hover:text-agro-green">
+                Become a Partner <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+             </Button>
+           </Link>
         </div>
       </section>
 
