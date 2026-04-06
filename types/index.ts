@@ -28,7 +28,7 @@ export interface Product {
     fiber: string;
     moisture: string;
   };
-  price: number;
+  price?: number | null;
   stock?: number;
   unit?: string;
   images?: string[];

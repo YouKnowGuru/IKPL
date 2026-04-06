@@ -79,7 +79,7 @@ export default function AddProductPage() {
   const validate = () => {
     if (!form.name.trim()) return 'Product name is required';
     if (!form.categoryId) return 'Please select a category';
-    if (!form.price || parseFloat(form.price) < 0) return 'Please enter a valid price greater than 0';
+    if (form.price && parseFloat(form.price) < 0) return 'Price cannot be negative';
     if (images.length === 0) return 'At least one image is required';
     if (!description || description === '<p></p>') return 'Description is required';
     return null;
@@ -101,7 +101,7 @@ export default function AddProductPage() {
         body: JSON.stringify({
           name: form.name,
           categoryId: form.categoryId,
-          price: parseFloat(form.price),
+          ...(form.price ? { price: parseFloat(form.price) } : {}),
           unit: form.unit,
           status: form.status,
           description,
@@ -217,7 +217,7 @@ export default function AddProductPage() {
                    </select>
                  </div>
                  <div>
-                   <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5 block">Price (Nu.) <span className="text-red-500">*</span></label>
+                   <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5 block">Price (Nu.)</label>
                    <Input 
                      type="number"
                      placeholder="0.00" 

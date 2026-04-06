@@ -100,7 +100,7 @@ export default function CartPage() {
                       {item.product.name}
                     </h3>
                   </Link>
-                  <p className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-2 sm:mb-3">Nu. {item.product.price.toLocaleString()}</p>
+                  <p className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white mb-2 sm:mb-3">Nu. {(item.product.price ?? 0).toLocaleString()}</p>
                   
                   <div className="flex items-center justify-center sm:justify-start gap-3">
                     <div className="flex items-center bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/10 rounded-xl h-10 w-fit px-1.5">
@@ -136,7 +136,7 @@ export default function CartPage() {
 
                 <div className="text-right hidden sm:block">
                    <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-0.5">Row Total</p>
-                   <p className="text-xl font-display font-bold text-agro-green">Nu. {(item.product.price * item.quantity).toLocaleString()}</p>
+                   <p className="text-xl font-display font-bold text-agro-green">Nu. {((item.product.price ?? 0) * item.quantity).toLocaleString()}</p>
                 </div>
 
 

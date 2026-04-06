@@ -121,7 +121,7 @@ export default function ProductsAdmin() {
                         </div>
                       </td>
                       <td className="px-6 py-4 font-display font-bold text-agro-green">
-                        Nu. {p.price?.toFixed(2)}
+                        {p.price != null ? `Nu. ${p.price.toFixed(2)}` : <span className="text-zinc-400 font-normal text-xs">N/A</span>}
                       </td>
                       <td className="px-6 py-4">
                         <Badge

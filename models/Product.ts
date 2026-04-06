@@ -11,7 +11,7 @@ export interface IProduct extends mongoose.Document {
     moisture: string;
     others?: string;
   };
-  price: number;
+  price?: number | null;
   images: string[];
   unit: string;
   status: 'active' | 'inactive';
@@ -45,7 +45,7 @@ const ProductSchema = new mongoose.Schema<IProduct>(
     },
     price: {
       type: Number,
-      required: [true, 'Please provide a price'],
+      default: null,
       min: [0, 'Price cannot be negative'],
     },
     images: {

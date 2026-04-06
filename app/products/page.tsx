@@ -85,7 +85,7 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
         </p>
 
         <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 xs:gap-0 mt-auto">
-          <span className="font-display font-bold text-sm sm:text-lg text-agro-green">Nu. {product.price.toLocaleString()}</span>
+          <span className="font-display font-bold text-sm sm:text-lg text-agro-green">{product.price != null ? `Nu. ${product.price.toLocaleString()}` : 'Contact for Price'}</span>
 
           <Button
             size="sm"

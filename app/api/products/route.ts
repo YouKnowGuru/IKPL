@@ -103,10 +103,12 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, categoryId, description, nutrients, price, images, status, unit } = body;
 
-    if (!name || !categoryId || !price)
-      return NextResponse.json({ success: false, message: 'name, categoryId and price are required' }, { status: 400 });
+    if (!name || !categoryId)
+      return NextResponse.json({ success: false, message: 'name and categoryId are required' }, { status: 400 });
 
-    const product = await Product.create({ name, categoryId, description, nutrients, price, images: images || [], status: status || 'active', unit: unit || 'bags' });
+    const productData: any = { name, categoryId, description, nutrients, images: images || [], status: status || 'active', unit: unit || 'bags' };
+    if (price !== undefined && price !== null && price !== '') productData.price = parseFloat(price);
+    const product = await Product.create(productData);
     await product.populate('categoryId', 'name slug');
     return NextResponse.json({ success: true, product }, { status: 201 });
   } catch (error: any) {

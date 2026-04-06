@@ -199,7 +199,7 @@ export default function InventoryAdmin() {
                     )}
                   </td>
                   <td className="px-6 py-4 text-zinc-500 text-sm">
-                    Nu. {item.price?.toLocaleString()}
+                    {item.price != null ? `Nu. ${item.price.toLocaleString()}` : 'N/A'}
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-end gap-2">

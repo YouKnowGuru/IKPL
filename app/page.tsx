@@ -185,7 +185,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
-            <span className="font-display font-bold text-base sm:text-xl text-agro-green">Nu. {product.price.toFixed(0)}</span>
+            <span className="font-display font-bold text-base sm:text-xl text-agro-green">{product.price != null ? `Nu. ${product.price.toFixed(0)}` : 'Contact for Price'}</span>
             <button
               onClick={handleAdd}
               disabled={(product.stock ?? 0) === 0 || adding}

@@ -1,0 +1,106 @@
+▲ Next.js 16.2.2 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 10.7s
+  Running TypeScript ...
+  Finished TypeScript in 11.7s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/65) ...
+  Generating static pages using 7 workers (16/65) 
+  Generating static pages using 7 workers (32/65) 
+  Generating static pages using 7 workers (48/65) 
+✅ Connected to MongoDB
+✓ Generating static pages using 7 workers (65/65) in 1820ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ○ /admin/blog
+├ ƒ /admin/blog/edit/[id]
+├ ○ /admin/blog/new
+├ ○ /admin/categories
+├ ○ /admin/content
+├ ○ /admin/dashboard
+├ ○ /admin/gallery
+├ ○ /admin/inventory
+├ ○ /admin/locations
+├ ○ /admin/messages
+├ ○ /admin/orders
+├ ○ /admin/partners
+├ ○ /admin/products
+├ ƒ /admin/products/edit/[id]
+├ ○ /admin/products/new
+├ ○ /admin/profile
+├ ○ /admin/reviews
+├ ○ /admin/settings
+├ ○ /admin/team
+├ ○ /admin/users
+├ ƒ /api/admin/debug-orders
+├ ƒ /api/admin/profile
+├ ƒ /api/admin/stats
+├ ƒ /api/auth/forgot-password
+├ ƒ /api/auth/login
+├ ƒ /api/auth/logout
+├ ƒ /api/auth/me
+├ ƒ /api/auth/register
+├ ƒ /api/auth/resend-otp
+├ ƒ /api/auth/reset-password
+├ ƒ /api/auth/verify-otp
+├ ƒ /api/blog
+├ ƒ /api/blog/[id]
+├ ƒ /api/blog/slug/[slug]
+├ ƒ /api/categories
+├ ƒ /api/categories/[id]
+├ ƒ /api/contact
+├ ƒ /api/contact/[id]
+├ ƒ /api/contact/[id]/reply
+├ ƒ /api/content
+├ ƒ /api/gallery
+├ ƒ /api/gallery/[id]
+├ ƒ /api/inventory
+├ ƒ /api/locations
+├ ƒ /api/locations/[id]
+├ ƒ /api/orders
+├ ƒ /api/orders/[id]
+├ ƒ /api/partners
+├ ƒ /api/partners/[id]
+├ ƒ /api/products
+├ ƒ /api/products/[id]
+├ ƒ /api/reviews
+├ ƒ /api/reviews/[id]
+├ ƒ /api/settings
+├ ƒ /api/stats
+├ ƒ /api/team
+├ ƒ /api/team/[id]
+├ ƒ /api/upload
+├ ƒ /api/user/settings
+├ ƒ /api/users
+├ ƒ /api/users/[id]
+├ ○ /blog
+├ ƒ /blog/[slug]
+├ ○ /cart
+├ ○ /checkout
+├ ○ /contact
+├ ƒ /dashboard
+├ ○ /dashboard/orders
+├ ○ /dashboard/settings
+├ ○ /forgot-password
+├ ○ /gallery
+├ ○ /login
+├ ○ /orders
+├ ○ /privacy
+├ ƒ /product/[id]
+├ ○ /products
+├ ○ /register
+├ ○ /terms
+└ ○ /udoor
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

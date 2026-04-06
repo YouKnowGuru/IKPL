@@ -264,9 +264,9 @@ export default function CheckoutPage() {
                         </div>
                         <div className="flex-1 min-w-0">
                            <p className="font-bold text-xs truncate leading-tight">{item.product.name}</p>
-                           <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest">{item.quantity} × Nu. {item.product.price}</p>
+                           <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest">{item.quantity} × Nu. {item.product.price ?? 0}</p>
                         </div>
-                        <p className="font-bold text-xs">Nu. {(item.quantity * item.product.price).toLocaleString()}</p>
+                        <p className="font-bold text-xs">Nu. {(item.quantity * (item.product.price ?? 0)).toLocaleString()}</p>
                       </div>
                     ))}
                   </div>

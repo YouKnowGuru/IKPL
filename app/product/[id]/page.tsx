@@ -186,7 +186,7 @@ export default function ProductDetailPage() {
           </div>
           <div>
             <h3 className="font-bold text-sm truncate max-w-[150px] sm:max-w-[300px]">{product.name}</h3>
-            <p className="text-agro-green font-bold text-xs">Nu. {product.price.toFixed(2)}</p>
+            <p className="text-agro-green font-bold text-xs">{product.price != null ? `Nu. ${product.price.toFixed(2)}` : 'Contact for Price'}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -317,9 +317,9 @@ export default function ProductDetailPage() {
 
               <div className="flex items-end gap-2 mb-8">
                 <span className="text-3xl sm:text-4xl font-display font-bold text-agro-green leading-none">
-                  Nu. {product.price.toLocaleString()}
+                  {product.price != null ? `Nu. ${product.price.toLocaleString()}` : 'Contact for Price'}
                 </span>
-                <span className="text-sm text-zinc-400 font-medium mb-1 opacity-60">/ Bag</span>
+                {product.price != null && <span className="text-sm text-zinc-400 font-medium mb-1 opacity-60">/ Bag</span>}
               </div>
 
               <div 
@@ -359,7 +359,7 @@ export default function ProductDetailPage() {
                     </div>
                     <div className="text-left sm:text-right mt-2 sm:mt-0 border-t border-white/10 sm:border-0 pt-4 sm:pt-0">
                       <p className="text-zinc-500 text-[9px] font-bold uppercase tracking-widest mb-0.5">Estimated Total</p>
-                      <p className="text-2xl font-display font-bold text-white">Nu. {(product.price * quantity).toLocaleString()}</p>
+                      <p className="text-2xl font-display font-bold text-white">{product.price != null ? `Nu. ${(product.price * quantity).toLocaleString()}` : 'N/A'}</p>
                     </div>
                   </div>
                   
