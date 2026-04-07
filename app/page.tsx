@@ -108,6 +108,42 @@ function ParticleCanvas() {
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
 }
 
+// ─── Typewriter Effect ────────────────────────────────────────────────
+function Typewriter({ words, className = "" }: { words: string[]; className?: string }) {
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [reverse, setReverse] = useState(false);
+  const [blink, setBlink] = useState(true);
+
+  useEffect(() => {
+    if (subIndex === words[index].length + 1 && !reverse) {
+      const timeout = setTimeout(() => setReverse(true), 2000);
+      return () => clearTimeout(timeout);
+    }
+    if (subIndex === 0 && reverse) {
+      setReverse(false);
+      setIndex((prev) => (prev + 1) % words.length);
+      return;
+    }
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (reverse ? -1 : 1));
+    }, Math.max(reverse ? 50 : 100, Math.random() * 150));
+    return () => clearTimeout(timeout);
+  }, [subIndex, index, reverse, words]);
+
+  useEffect(() => {
+    const timeout2 = setTimeout(() => setBlink((prev) => !prev), 500);
+    return () => clearTimeout(timeout2);
+  }, [blink]);
+
+  return (
+    <span className={className}>
+      {words[index].substring(0, subIndex)}
+      <span className={`${blink ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 ml-0.5 border-r-2 border-agro-orange h-[0.8em] inline-block align-middle`}></span>
+    </span>
+  );
+}
+
 // ─── Product Card ──────────────────────────────────────────────────────
 function ProductCard({ product, index }: { product: Product; index: number }) {
   const { addToCart } = useCart();
@@ -530,9 +566,18 @@ export default function HomePage() {
                 <span className="text-zinc-200 tracking-wide">Premium Wholesale</span>
               </motion.div>
 
-              <motion.h1 variants={fadeUp} className="font-display font-extrabold text-white text-2xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] sm:leading-[1.05] tracking-tight">
+              <motion.h1 variants={fadeUp} className="font-display font-extrabold text-white text-2xl sm:text-5xl md:text-6xl lg:text-[4rem] min-h-[1.2em] leading-[1.1] sm:leading-[1.05] tracking-tight">
                 Trusted <br className="hidden sm:block" />
-                <span className="bg-gradient-to-r from-agro-orange via-amber-400 to-agro-green bg-clip-text text-transparent">High Quality Goods</span>
+                <Typewriter 
+                  words={[
+                    "High Quality Goods",
+                    "Premium Feed Supply",
+                    "Strategic Marketing",
+                    "Reliable Distribution",
+                    "Bhutan's Best Logistics"
+                  ]}
+                  className="bg-gradient-to-r from-agro-orange via-amber-400 to-agro-green bg-clip-text text-transparent"
+                />
               </motion.h1>
 
 
