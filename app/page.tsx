@@ -653,9 +653,11 @@ export default function HomePage() {
               <motion.div
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-[8%] left-[-4%] z-20 w-[35%] sm:w-[42%] aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-dark hidden xs:block"
+                className="absolute top-[8%] left-[-4%] z-20 w-[35%] sm:w-[42%] aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-dark hidden xs:block p-2 sm:p-4"
               >
-                <Image src="/udoor.jpg" alt="Premium Feeds" fill sizes="33vw" className="object-cover opacity-90 hover:scale-110 transition-transform duration-700" />
+                <div className="relative w-full h-full rounded-xl overflow-hidden">
+                  <Image src="/udoor.jpg" alt="Premium Feeds" fill sizes="33vw" className="object-contain opacity-90 hover:scale-110 transition-transform duration-700" />
+                </div>
               </motion.div>
 
 
@@ -665,7 +667,7 @@ export default function HomePage() {
                 className="absolute bottom-[2%] left-[4%] z-20 w-[35%] sm:w-[50%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-dark p-1 sm:p-2"
               >
                 <div className="relative w-full h-full rounded-xl overflow-hidden">
-                  <Image src="/IKPL logo with stylized dragon.png" alt="IKPL Logo" fill sizes="33vw" className="object-contain opacity-90 hover:scale-110 transition-transform duration-700 bg-white/10 p-2" />
+                  <Image src="/logo.jpeg" alt="IKPL Logo" fill sizes="33vw" className="object-contain opacity-90 hover:scale-110 transition-transform duration-700 bg-white/10 p-2" />
                 </div>
               </motion.div>
 
