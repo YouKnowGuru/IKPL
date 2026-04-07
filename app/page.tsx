@@ -402,10 +402,11 @@ export default function HomePage() {
   };
 
   const heroImages = [
-    "https://images.pexels.com/photos/7781984/pexels-photo-7781984.jpeg",
-    "https://images.pexels.com/photos/10041325/pexels-photo-10041325.jpeg",
-    "https://images.unsplash.com/photo-1667388600917-e5e06c407ff1?q=80&w=1170&auto=format&fit=crop",
-    "/banner2.jpg"
+    '/img/img1.jpg',
+    '/img/img11.jpg',
+    '/img/img21.jpg',
+    '/img/img29.jpg',
+    '/img/banner2.jpg'
   ];
 
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
