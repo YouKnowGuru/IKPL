@@ -20,6 +20,7 @@ import {
   Store, Info, AlertTriangle, ChevronRight
 } from 'lucide-react';
 import { getCategoryLabel, formatDate, stripHtml, cn } from '@/lib/utils';
+import DOMPurify from 'isomorphic-dompurify';
 
 
 export default function ProductDetailPage() {
@@ -330,7 +331,7 @@ export default function ProductDetailPage() {
 
               <div 
                 className="prose prose-zinc dark:prose-invert max-w-none text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8 text-base"
-                dangerouslySetInnerHTML={{ __html: product.description }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(product.description) }}
               />
 
               {/* Add to Cart Section */}

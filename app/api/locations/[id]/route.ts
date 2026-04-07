@@ -26,7 +26,8 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 
     await connectDB();
     const body = await request.json();
-    const location = await Location.findByIdAndUpdate(id, body, { new: true });
+    const { name, district, address, contact, adminId, isActive } = body;
+    const location = await Location.findByIdAndUpdate(id, { name, district, address, contact, adminId, isActive }, { new: true });
     if (!location) return NextResponse.json({ success: false, message: 'Not found' }, { status: 404 });
 
     // If assigning a new adminId, update that user's locationId

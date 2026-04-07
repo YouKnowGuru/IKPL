@@ -12,6 +12,7 @@ import {
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { motion } from 'framer-motion';
+import DOMPurify from 'isomorphic-dompurify';
 
 export default function BlogPostPage() {
   const { slug } = useParams();
@@ -118,7 +119,7 @@ export default function BlogPostPage() {
               prose-img:rounded-[2.5rem] prose-img:shadow-xl
               prose-blockquote:border-l-4 prose-blockquote:border-agro-green prose-blockquote:bg-agro-green/5 prose-blockquote:p-8 prose-blockquote:rounded-r-3xl
               prose-strong:text-zinc-900 dark:prose-strong:text-white"
-            dangerouslySetInnerHTML={{ __html: blog.content }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }}
           />
 
           {/* Tags */}

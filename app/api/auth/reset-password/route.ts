@@ -21,8 +21,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, message: 'Invalid request' }, { status: 400 });
     }
 
-    // Debug log (remove in production)
-    console.log(`Resetting password for ${email}: Input[${otp}], Stored[${user.otp}]`);
+    // Debug log removed for security
 
     if (!user.otp || String(user.otp).trim() !== String(otp).trim()) {
       return NextResponse.json({ success: false, message: 'Invalid OTP' }, { status: 400 });

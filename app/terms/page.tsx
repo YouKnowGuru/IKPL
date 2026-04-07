@@ -7,6 +7,7 @@ import {
   FileText, ShoppingBag, Truck, RefreshCw, Gavel,
   AlertTriangle, Copyright, Scale, Phone, ChevronRight, Sparkles, CheckCircle
 } from 'lucide-react';
+import DOMPurify from 'isomorphic-dompurify';
 
 const sections = [
   {
@@ -183,7 +184,7 @@ export default function TermsPage() {
                   ))}
                 </div>
               ) : content ? (
-                <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-display" dangerouslySetInnerHTML={{ __html: content }} />
+                <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-display" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
               ) : (
                 <div className="space-y-5">
                   {sections.map(({ id, icon: Icon, title, content: text, color, bg }) => (

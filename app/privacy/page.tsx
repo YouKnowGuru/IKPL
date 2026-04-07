@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Shield, Lock, Eye, Share2, Bell, Cookie, RefreshCw, Mail, ChevronRight, Sparkles } from 'lucide-react';
+import DOMPurify from 'isomorphic-dompurify';
 
 const sections = [
   {
@@ -160,7 +161,7 @@ export default function PrivacyPage() {
                   ))}
                 </div>
               ) : content ? (
-                <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-display" dangerouslySetInnerHTML={{ __html: content }} />
+                <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-display" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
               ) : (
                 <div className="space-y-6">
                   {sections.map(({ id, icon: Icon, title, content: text, color, bg }) => (
