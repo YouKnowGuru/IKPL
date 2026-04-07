@@ -28,6 +28,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ikpl-feed.com'),
   title: {
     default: 'IKPL — Premium Animal Feed | Trusted by 20,000+ Farmers',
     template: '%s | IKPL Premium Feeds',
@@ -35,6 +36,11 @@ export const metadata: Metadata = {
   description: 'IKPL provides scientifically-formulated, ISO-certified animal feed for broilers, layers, cattle, fish, and more. Available for store pickup across all 20 states of Bhutan since 2004.',
   keywords: ['IKPL', 'animal feed', 'premium livestock feed', 'broiler feed', 'cattle feed', 'fish feed', 'poultry nutrition', 'farmer', 'agro'],
   authors: [{ name: 'IKPL Group' }],
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   openGraph: {
     title: 'IKPL — Premium Animal Feed',
     description: 'Nourishing farms, nurturing futures. Premium quality animal feed for healthier livestock and better yields.',
@@ -76,6 +82,17 @@ export default function RootLayout({
       className={`${inter.variable} ${syne.variable} ${spaceGrotesk.variable}`}
     >
       <body className="font-body antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "url": "https://ikpl-feed.com",
+              "logo": "https://ikpl-feed.com/logo.png"
+            })
+          }}
+        />
         <ThemeProvider>
           <AuthProvider>
             <CartProvider>
