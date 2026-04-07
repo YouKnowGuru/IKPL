@@ -235,7 +235,7 @@ function AdsSlider() {
 
   return (
     <div 
-      className="relative w-full h-[500px] sm:h-[700px] rounded-[3rem] sm:rounded-[4rem] overflow-hidden group shadow-2xl border border-zinc-100 dark:border-white/10"
+      className="relative w-full min-h-[650px] lg:h-[700px] rounded-[2.5rem] sm:rounded-[4rem] overflow-hidden group shadow-2xl border border-zinc-100 dark:border-white/10 flex flex-col"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -246,7 +246,7 @@ function AdsSlider() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2 }}
-          className="absolute inset-0 bg-zinc-950"
+          className="absolute inset-0 bg-zinc-950 flex flex-col lg:block"
         >
           {/* Layer 1: Immersive Cinematic Backdrop */}
           <div className="absolute inset-0 overflow-hidden">
@@ -261,14 +261,14 @@ function AdsSlider() {
           </div>
 
           {/* Layer 2: The 'Pop' Card (Responsive 3D Engine) */}
-          <div className="absolute inset-0 flex items-center justify-center lg:justify-end lg:pr-24 pointer-events-none perspective-[1200px]">
+          <div className="relative lg:absolute inset-0 flex items-center justify-center lg:justify-end lg:pr-24 pointer-events-none perspective-[1200px] z-20 mt-[-40px] lg:mt-0 order-2 lg:order-none">
             <motion.div 
               key={currentIndex}
               initial={{ scale: 0.7, opacity: 0, rotateY: 25, z: -100 }}
               animate={{ scale: 1, opacity: 1, rotateY: 0, z: 0 }}
               whileHover={{ rotateY: -12, rotateX: 6, scale: 1.05, translateZ: 50 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
-              className="relative h-full aspect-[9/16] group/pop pointer-events-auto"
+              className="relative w-[280px] sm:w-[400px] lg:h-[80%] aspect-square group/pop pointer-events-auto"
             >
               {/* Back-Glow Effect */}
               <div className="absolute -inset-10 bg-agro-green/20 blur-[120px] rounded-full -z-10 opacity-30 sm:opacity-50" />
@@ -282,7 +282,7 @@ function AdsSlider() {
                   src={images[currentIndex]}
                   alt="Premium Product Pop"
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   priority
                 />
               </motion.div>
@@ -295,7 +295,7 @@ function AdsSlider() {
       </AnimatePresence>
 
       {/* Asymmetrical Content Overlay */}
-      <div className="absolute inset-0 flex flex-col justify-center p-8 sm:p-16 lg:p-24 pointer-events-none z-10">
+      <div className="relative lg:absolute inset-0 flex flex-col justify-center p-8 sm:p-16 lg:p-24 pointer-events-none z-10 order-1 lg:order-none pt-16 lg:pt-24">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
