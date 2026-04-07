@@ -440,16 +440,12 @@ export default function HomePage() {
   };
 
   const heroImages = [
-    '/img/img1.jpg',
-    '/img/img3.jpg',
-    '/img/img7.jpg',
-    '/img/img11.jpg',
-    '/img/img15.jpg',
-    '/img/img19.jpg',
-    '/img/img21.jpg',
-    '/img/img25.jpg',
-    '/img/img29.jpg',
-    '/img/banner2.jpg'
+    '/image2/Broiler Finisher.jpg',
+    '/image2/Broiler Grower.jpg',
+    '/image2/Broiler Starter.jpg',
+    '/image2/Chicken Starter.jpg',
+    '/image2/Layer Mash.jpg',
+    '/image2/Milk Ration.jpg'
   ];
 
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
@@ -659,7 +655,7 @@ export default function HomePage() {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-[8%] left-[-4%] z-20 w-[35%] sm:w-[42%] aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-dark hidden xs:block"
               >
-                <Image src="/rumpu.jpg" alt="Premium Noodles" fill sizes="33vw" className="object-cover opacity-90 hover:scale-110 transition-transform duration-700" />
+                <Image src="/udoor.jpg" alt="Premium Feeds" fill sizes="33vw" className="object-cover opacity-90 hover:scale-110 transition-transform duration-700" />
               </motion.div>
 
 
@@ -669,7 +665,7 @@ export default function HomePage() {
                 className="absolute bottom-[2%] left-[4%] z-20 w-[35%] sm:w-[50%] aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-dark p-1 sm:p-2"
               >
                 <div className="relative w-full h-full rounded-xl overflow-hidden">
-                  <Image src="/udoor.jpg" alt="Livestock" fill sizes="33vw" className="object-cover opacity-90 hover:scale-110 transition-transform duration-700" />
+                  <Image src="/IKPL logo with stylized dragon.png" alt="IKPL Logo" fill sizes="33vw" className="object-contain opacity-90 hover:scale-110 transition-transform duration-700 bg-white/10 p-2" />
                 </div>
               </motion.div>
 
