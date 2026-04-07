@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/shared/Toast';
-import { MapPin, CreditCard, DollarSign, CheckCircle2, Package } from 'lucide-react';
+import { MapPin, CreditCard, DollarSign, CheckCircle2, Package, Trash2, AlertTriangle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -19,6 +19,8 @@ export default function AdminOrders() {
   const [paidAmount, setPaidAmount] = useState<string>('0');
   const [paymentMethod, setPaymentMethod] = useState<string>('Cash');
   const [isSaving, setIsSaving] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
   const { showToast } = useToast();
   const { user } = useAuth();
@@ -31,6 +33,7 @@ export default function AdminOrders() {
       setPaymentStatus(selectedOrder.paymentStatus || 'unpaid');
       setPaidAmount(selectedOrder.amountPaid?.toString() || '0');
       setPaymentMethod(selectedOrder.paymentMethod || 'Cash');
+      setShowConfirmDelete(false);
     }
   }, [selectedOrder]);
 
@@ -89,6 +92,29 @@ export default function AdminOrders() {
       showToast('Error updating order', 'error');
     } finally {
       setIsSaving(false);
+    }
+  };
+  
+  const handleDeleteOrder = async () => {
+    if (!selectedOrder) return;
+    setIsDeleting(true);
+    try {
+      const res = await fetch(`/api/orders/${selectedOrder._id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast('Order deleted and inventory restored', 'success');
+        setSelectedOrder(null);
+        fetchOrders();
+      } else {
+        showToast(data.message || 'Delete failed', 'error');
+      }
+    } catch {
+      showToast('Error deleting order', 'error');
+    } finally {
+      setIsDeleting(false);
+      setShowConfirmDelete(false);
     }
   };
 
@@ -323,32 +349,72 @@ export default function AdminOrders() {
               </div>
             </div>
 
-            <DialogFooter className="gap-2">
-              <Button
-                variant="outline"
-                onClick={() => setSelectedOrder(null)}
-                disabled={isSaving}
-                className="rounded-xl"
-              >
-                Cancel
-              </Button>
-              <Button
-                onClick={handleUpdateStatus}
-                disabled={isSaving}
-                className="rounded-xl btn-glow-green text-white font-bold h-11 px-8 min-w-[160px]"
-              >
-                {isSaving ? (
-                  <span className="flex items-center gap-2">
-                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                    </svg>
-                    Saving…
-                  </span>
-                ) : (
-                  'Save & Update Order'
-                )}
-              </Button>
+            <DialogFooter className="flex flex-col sm:flex-row gap-3 sm:justify-between items-center w-full">
+              {user?.role === 'super_admin' && (
+                <div className="w-full sm:w-auto">
+                  {!showConfirmDelete ? (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setShowConfirmDelete(true)}
+                      className="text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl flex items-center gap-2"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                      Delete Order
+                    </Button>
+                  ) : (
+                    <div className="flex items-center gap-2 animate-in slide-in-from-left-2 transition-all">
+                      <AlertTriangle className="h-4 w-4 text-amber-500" />
+                      <span className="text-[10px] font-bold text-red-500 uppercase tracking-tighter">Are you sure?</span>
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={handleDeleteOrder}
+                        disabled={isDeleting}
+                        className="rounded-lg h-8 px-3 text-[10px] font-bold uppercase"
+                      >
+                        {isDeleting ? 'Deleting...' : 'Confirm'}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setShowConfirmDelete(false)}
+                        className="rounded-lg h-8 px-3 text-[10px] font-bold uppercase"
+                      >
+                        No
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                <Button
+                  variant="outline"
+                  onClick={() => setSelectedOrder(null)}
+                  disabled={isSaving || isDeleting}
+                  className="rounded-xl h-11 px-6"
+                >
+                  Close
+                </Button>
+                <Button
+                  onClick={handleUpdateStatus}
+                  disabled={isSaving || isDeleting}
+                  className="rounded-xl btn-glow-green text-white font-bold h-11 px-8 min-w-[160px]"
+                >
+                  {isSaving ? (
+                    <span className="flex items-center gap-2">
+                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      Saving…
+                    </span>
+                  ) : (
+                    'Save & Update'
+                  )}
+                </Button>
+              </div>
             </DialogFooter>
           </DialogContent>
         </Dialog>

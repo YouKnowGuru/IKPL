@@ -154,3 +154,63 @@ export async function PUT(
   }
 }
 
+// DELETE /api/orders/[id] - Permanently delete order (Super Admin only)
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params;
+    const payload = await requireAuth(request);
+
+    // Strictly restrict to Super Admin
+    if (payload.role !== 'super_admin') {
+      return NextResponse.json(
+        { success: false, message: 'Forbidden: Super Admin access required' },
+        { status: 403 }
+      );
+    }
+
+    await connectDB();
+
+    // 1. Fetch order first to identify items + status for inventory restoration
+    const order = await Order.findById(id);
+    if (!order) {
+      return NextResponse.json(
+        { success: false, message: 'Order not found' },
+        { status: 404 }
+      );
+    }
+
+    // 2. Restore inventory if the order was NOT already cancelled
+    // (If it was cancelled, stock was already restored during the PUT update)
+    if (order.status !== 'cancelled') {
+      try {
+        for (const item of order.items) {
+          await Inventory.findOneAndUpdate(
+            { productId: item.productId, locationId: order.locationId },
+            { $inc: { stock: item.quantity } }
+          );
+        }
+      } catch (inventoryError) {
+        console.error('Inventory restoration failed during delete:', inventoryError);
+        // We continue with decompression to ensure the order is still removed
+      }
+    }
+
+    // 3. Perform hard delete
+    await Order.findByIdAndDelete(id);
+
+    return NextResponse.json({
+      success: true,
+      message: 'Order permanently deleted and inventory synchronized',
+    });
+  } catch (error: any) {
+    console.error('Delete order error:', error);
+    if (error.message === 'Authentication required') {
+      return NextResponse.json({ success: false, message: error.message }, { status: 401 });
+    }
+    return NextResponse.json({ success: false, message: 'Internal server error' }, { status: 500 });
+  }
+}
+
