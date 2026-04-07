@@ -275,8 +275,8 @@ function AdsSlider() {
                    Premium Distribution
                 </div>
                 <h3 className="text-3xl sm:text-5xl font-display font-bold text-white mb-4 leading-tight">
-                  Trusted <br />
-                  <span className="gradient-text">High Quality Goods</span>
+                  UDOR Feeds | Rumpum | <br className="hidden sm:block" />
+                  <span className="gradient-text text-agro-orange">Sizmic marketing partner</span>
                 </h3>
 
                 {/* Dynamic Moving Highlight Bar */}
@@ -531,8 +531,8 @@ export default function HomePage() {
               </motion.div>
 
               <motion.h1 variants={fadeUp} className="font-display font-extrabold text-white text-2xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] sm:leading-[1.05] tracking-tight">
-                UDOR Feeds | Rumpum | <br className="hidden sm:block" />
-                <span className="bg-gradient-to-r from-agro-orange via-amber-400 to-agro-green bg-clip-text text-transparent">Sizmic marketing partner</span>
+                Trusted <br className="hidden sm:block" />
+                <span className="bg-gradient-to-r from-agro-orange via-amber-400 to-agro-green bg-clip-text text-transparent">High Quality Goods</span>
               </motion.h1>
 
 
