@@ -3,7 +3,7 @@ import connectDB from '@/lib/db';
 import { Product, Blog } from '@/models';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://ikpl-feed.com';
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.ikplbhutan.com';
 
   // Force establishing DB connection for dynamic generation
   await connectDB();

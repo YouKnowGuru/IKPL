@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   // Use the environment variable if available, otherwise fallback to a generic domain or placeholder.
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://ikpl-feed.com';
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.ikplbhutan.com';
 
   return {
     rules: {
