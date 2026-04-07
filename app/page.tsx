@@ -235,7 +235,7 @@ function AdsSlider() {
 
   return (
     <div 
-      className="relative w-full min-h-[650px] lg:h-[700px] rounded-[2.5rem] sm:rounded-[4rem] overflow-hidden group shadow-2xl border border-zinc-100 dark:border-white/10 flex flex-col"
+      className="relative w-full min-h-[850px] sm:min-h-[900px] lg:h-[700px] rounded-[2.5rem] sm:rounded-[4rem] overflow-hidden group shadow-2xl border border-zinc-100 dark:border-white/10 flex flex-col"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -268,7 +268,7 @@ function AdsSlider() {
               animate={{ scale: 1, opacity: 1, rotateY: 0, z: 0 }}
               whileHover={{ rotateY: -12, rotateX: 6, scale: 1.05, translateZ: 50 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
-              className="relative w-[280px] sm:w-[400px] lg:h-[80%] aspect-square group/pop pointer-events-auto"
+              className="relative w-[320px] sm:w-[450px] lg:h-[80%] aspect-square group/pop pointer-events-auto"
             >
               {/* Back-Glow Effect */}
               <div className="absolute -inset-10 bg-agro-green/20 blur-[120px] rounded-full -z-10 opacity-30 sm:opacity-50" />
@@ -282,7 +282,7 @@ function AdsSlider() {
                   src={images[currentIndex]}
                   alt="Premium Product Pop"
                   fill
-                  className="object-cover"
+                  className="object-contain p-4 sm:p-8"
                   priority
                 />
               </motion.div>
