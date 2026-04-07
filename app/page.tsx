@@ -235,7 +235,7 @@ function AdsSlider() {
 
   return (
     <div 
-      className="relative w-full min-h-[850px] sm:min-h-[900px] lg:h-[700px] rounded-[2.5rem] sm:rounded-[4rem] overflow-hidden group shadow-2xl border border-zinc-100 dark:border-white/10 flex flex-col"
+      className="relative w-full h-auto lg:h-[700px] rounded-[2.5rem] sm:rounded-[4rem] overflow-hidden group shadow-2xl border border-zinc-100 dark:border-white/10 flex flex-col bg-zinc-950"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -246,7 +246,7 @@ function AdsSlider() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2 }}
-          className="absolute inset-0 bg-zinc-950 flex flex-col lg:block"
+          className="relative lg:absolute inset-0 flex flex-col lg:block w-full min-h-[750px] lg:h-full overflow-hidden"
         >
           {/* Layer 1: Immersive Cinematic Backdrop */}
           <div className="absolute inset-0 overflow-hidden">
@@ -260,92 +260,94 @@ function AdsSlider() {
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
-          {/* Layer 2: The 'Pop' Card (Responsive 3D Engine) */}
-          <div className="relative lg:absolute inset-0 flex items-center justify-center lg:justify-end lg:pr-24 pointer-events-none perspective-[1200px] z-20 mt-[-40px] lg:mt-0 order-2 lg:order-none">
-            <motion.div 
-              key={currentIndex}
-              initial={{ scale: 0.7, opacity: 0, rotateY: 25, z: -100 }}
-              animate={{ scale: 1, opacity: 1, rotateY: 0, z: 0 }}
-              whileHover={{ rotateY: -12, rotateX: 6, scale: 1.05, translateZ: 50 }}
-              transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
-              className="relative w-[320px] sm:w-[450px] lg:h-[80%] aspect-square group/pop pointer-events-auto"
-            >
-              {/* Back-Glow Effect */}
-              <div className="absolute -inset-10 bg-agro-green/20 blur-[120px] rounded-full -z-10 opacity-30 sm:opacity-50" />
-              
-              <motion.div
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="w-full h-full rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(0,0,0,0.8)] transition-all duration-700"
+          <div className="relative z-10 flex flex-col lg:block w-full h-full">
+            {/* Asymmetrical Content Overlay (Moved Inside) */}
+            <div className="relative lg:absolute inset-0 flex flex-col justify-center p-8 sm:p-16 lg:p-24 pointer-events-none z-20 order-1 lg:order-none pt-20 lg:pt-0">
+              <motion.div 
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                key={`text-${currentIndex}`}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="max-w-xl pointer-events-auto"
               >
-                <Image
-                  src={images[currentIndex]}
-                  alt="Premium Product Pop"
-                  fill
-                  className="object-contain p-4 sm:p-8"
-                  priority
-                />
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white text-[10px] font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-6 border border-white/10 shadow-xl">
+                   <Star className="h-4 w-4 fill-agro-orange text-agro-orange" />
+                   Premium Distribution
+                </div>
+                <h3 className="text-3xl sm:text-5xl font-display font-bold text-white mb-4 leading-tight">
+                  Trusted <br />
+                  <span className="gradient-text">High Quality Goods</span>
+                </h3>
+
+                {/* Dynamic Moving Highlight Bar */}
+                <div className="relative w-full overflow-hidden h-7 mb-6 border-y border-white/10 flex items-center group/marquee">
+                  <motion.div 
+                    className="flex whitespace-nowrap gap-12 text-agro-green font-bold text-[10px] uppercase tracking-[0.25em]"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  >
+                    {[...Array(2)].map((_, i) => (
+                      <span key={i} className="flex gap-12">
+                        <span>Cattle Feeds</span> <span>•</span>
+                        <span>Poultry Feeds</span> <span>•</span>
+                        <span>Hor Spicy Noodles</span> <span>•</span>
+                        <span>Premium Chocolate</span> <span>•</span>
+                        <span>Specialized Nutrition</span> <span>•</span>
+                      </span>
+                    ))}
+                  </motion.div>
+                </div>
+
+                <p className="text-white/80 text-sm sm:text-lg mb-10 font-medium leading-relaxed max-w-lg drop-shadow-md">
+                  Empowering Bhutan's farmers with nutritionally optimized distribution of broiler, cattle, specialized livestock feeds, spicy noodles, and premium chocolates.
+                </p>
+                <div className="flex items-center gap-4">
+                   <Link href="/products">
+                      <Button className="btn-glow-green text-white font-bold h-12 px-8 rounded-xl shadow-lg border-0">
+                        Shop Now
+                      </Button>
+                   </Link>
+                   <button className="hidden sm:flex h-12 w-12 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-white border border-white/10 transition-all">
+                      <Play className="h-5 w-5 ml-0.5 fill-white" />
+                   </button>
+                </div>
               </motion.div>
-            </motion.div>
+            </div>
+
+            {/* Layer 2: The 'Pop' Card (Responsive 3D Engine) */}
+            <div className="relative lg:absolute inset-0 flex items-center justify-center lg:justify-end lg:pr-24 pointer-events-none perspective-[1200px] z-30 order-2 lg:order-none pb-20 lg:pb-0">
+              <motion.div 
+                key={`card-${currentIndex}`}
+                initial={{ scale: 0.7, opacity: 0, rotateY: 25, z: -100 }}
+                animate={{ scale: 1, opacity: 1, rotateY: 0, z: 0 }}
+                whileHover={{ rotateY: -12, rotateX: 6, scale: 1.05, translateZ: 50 }}
+                transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
+                className="relative w-[320px] sm:w-[450px] lg:h-[80%] aspect-square group/pop pointer-events-auto"
+              >
+                {/* Back-Glow Effect */}
+                <div className="absolute -inset-10 bg-agro-green/20 blur-[120px] rounded-full -z-10 opacity-30 sm:opacity-50" />
+                
+                <motion.div
+                  animate={{ y: [0, -15, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-full h-full rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(0,0,0,0.8)] transition-all duration-700"
+                >
+                  <Image
+                    src={images[currentIndex]}
+                    alt="Premium Product Pop"
+                    fill
+                    className="object-contain p-6 sm:p-12"
+                    priority
+                  />
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
 
           {/* Premium Overlays */}
-          <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none" />
+          <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none z-40" />
         </motion.div>
       </AnimatePresence>
-
-      {/* Asymmetrical Content Overlay */}
-      <div className="relative lg:absolute inset-0 flex flex-col justify-center p-8 sm:p-16 lg:p-24 pointer-events-none z-10 order-1 lg:order-none pt-16 lg:pt-24">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          key={currentIndex}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="max-w-xl pointer-events-auto"
-        >
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white text-[10px] font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-6 border border-white/10 shadow-xl">
-             <Star className="h-4 w-4 fill-agro-orange text-agro-orange" />
-             Premium Distribution
-          </div>
-          <h3 className="text-3xl sm:text-5xl font-display font-bold text-white mb-4 leading-tight">
-            Trusted <br />
-            <span className="gradient-text">High Quality Goods</span>
-          </h3>
-
-          {/* Dynamic Moving Highlight Bar */}
-          <div className="relative w-full overflow-hidden h-7 mb-6 border-y border-white/10 flex items-center group/marquee">
-            <motion.div 
-              className="flex whitespace-nowrap gap-12 text-agro-green font-bold text-[10px] uppercase tracking-[0.25em]"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              {[...Array(2)].map((_, i) => (
-                <span key={i} className="flex gap-12">
-                  <span>Cattle Feeds</span> <span>•</span>
-                  <span>Poultry Feeds</span> <span>•</span>
-                  <span>Hor Spicy Noodles</span> <span>•</span>
-                  <span>Premium Chocolate</span> <span>•</span>
-                  <span>Specialized Nutrition</span> <span>•</span>
-                </span>
-              ))}
-            </motion.div>
-          </div>
-
-          <p className="text-white/80 text-sm sm:text-lg mb-10 font-medium leading-relaxed max-w-lg drop-shadow-md">
-            Empowering Bhutan's farmers with nutritionally optimized distribution of broiler, cattle, specialized livestock feeds, spicy noodles, and premium chocolates.
-          </p>
-          <div className="flex items-center gap-4">
-             <Link href="/products">
-                <Button className="btn-glow-green text-white font-bold h-12 px-8 rounded-xl shadow-lg border-0">
-                  Shop Now
-                </Button>
-             </Link>
-             <button className="hidden sm:flex h-12 w-12 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-white border border-white/10 transition-all">
-                <Play className="h-5 w-5 ml-0.5 fill-white" />
-             </button>
-          </div>
-        </motion.div>
-      </div>
 
       {/* Slider Controls */}
       <div className="absolute bottom-10 right-10 flex items-center gap-4 z-20">
