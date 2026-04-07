@@ -403,8 +403,13 @@ export default function HomePage() {
 
   const heroImages = [
     '/img/img1.jpg',
+    '/img/img3.jpg',
+    '/img/img7.jpg',
     '/img/img11.jpg',
+    '/img/img15.jpg',
+    '/img/img19.jpg',
     '/img/img21.jpg',
+    '/img/img25.jpg',
     '/img/img29.jpg',
     '/img/banner2.jpg'
   ];
