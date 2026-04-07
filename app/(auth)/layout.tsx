@@ -48,14 +48,14 @@ export default function AuthLayout({
               <span className="gradient-text-animate whitespace-nowrap">For Better Yields</span>
             </h1>
             <p className="text-zinc-400 text-lg leading-relaxed max-w-md">
-              Join 20,000+ farmers across Bhutan who trust IKPL for scientifically-formulated, ISO-certified animal nutrition.
+              Join 10,000+ farmers across Bhutan who trust IKPL for scientifically-formulated, ISO-certified animal nutrition.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-6 pt-4">
             {[
-              { label: 'Farmers Trusted', val: '20K+' },
-              { label: 'Pickup States', val: '20' },
+              { label: 'Farmers Trusted', val: '10K+' },
+              { label: 'Pickup States', val: '10' },
             ].map((stat) => (
               <div key={stat.label} className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-md">
                 <div className="text-2xl font-display font-bold text-white">{stat.val}</div>

@@ -454,10 +454,10 @@ export default function HomePage() {
 
 
   const stats = [
-    { value: 20000, suffix: '+', label: 'Happy Farmers', icon: Users },
-    { value: 20, suffix: '+', label: 'Years Excellence', icon: Award },
-    { value: 50, suffix: '+', label: 'Feed Formulas', icon: FlaskConical },
-    { value: 25, suffix: '', label: 'States Covered', icon: Globe },
+    { value: 10000, suffix: '+', label: 'Happy Farmers', icon: Users },
+    { value: 12, suffix: '+', label: 'Years Excellence', icon: Award },
+    { value: 30, suffix: '+', label: 'Feed Formulas', icon: FlaskConical },
+    { value: 10, suffix: '+', label: 'States Covered', icon: Globe },
   ];
 
   const features = [

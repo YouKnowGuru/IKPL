@@ -30,10 +30,10 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://ikpl-feed.com'),
   title: {
-    default: 'IKPL — Premium Animal Feed | Trusted by 20,000+ Farmers',
+    default: 'IKPL — Premium Animal Feed | Trusted by 10,000+ Farmers',
     template: '%s | IKPL Premium Feeds',
   },
-  description: 'IKPL provides scientifically-formulated, ISO-certified animal feed for broilers, layers, cattle, fish, and more. Available for store pickup across all 20 states of Bhutan since 2004.',
+  description: 'IKPL provides scientifically-formulated, ISO-certified animal feed for broilers, layers, cattle, fish, and more. Available for store pickup across all 10 states of Bhutan since 2012.',
   keywords: ['IKPL', 'animal feed', 'premium livestock feed', 'broiler feed', 'cattle feed', 'fish feed', 'poultry nutrition', 'farmer', 'agro'],
   authors: [{ name: 'IKPL Group' }],
   icons: {
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'IKPL — Premium Animal Feed',
-    description: 'Trusted by 20,000+ farmers. ISO-certified, science-backed animal nutrition.',
+    description: 'Trusted by 10,000+ farmers. ISO-certified, science-backed animal nutrition.',
   },
   robots: {
     index: true,
